@@ -27,15 +27,20 @@ class ProductVC: UIViewController {
         super.viewWillAppear(true)
         
         if self.title == "Apple mobile devices" {
-            self.products = ["iPad", "iPod Touch", "iPhone"]
+            self.products = ["Apple iPad Pro", "Apple iPod Touch", "Apple iPhone"]
+        } else if self.title == "Samsung mobile devices" {
+            self.products = ["Samsung Galaxy S9", "Samsung Galaxy Note", "Samsung Galaxy Tab"]
+        } else if self.title == "Amazon mobile devices" {
+            self.products = ["Amazon Echo", "Amazon Alexa", "Amazon Fire HD"]
         } else {
-            self.products = ["Galaxy S4", "Galaxy Note", "Galaxy Tab"]
-        }
+            self.products = ["Windows Phone 8", "Microsoft Nokia Lumia", "Windows Surface"]
+            
         self.tableView.reloadData()
-    }
+        
+        }
 
     
-    override func didReceiveMemoryWarning() {
+        func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -81,8 +86,9 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
         //configure the cell
         cell.textLabel?.text = self.products?[indexPath.row]
         return cell
+        
+        }
     }
-    
     /*
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -128,4 +134,5 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     }
 */
     
-}
+    }
+

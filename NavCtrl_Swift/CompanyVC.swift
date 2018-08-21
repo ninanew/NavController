@@ -16,7 +16,7 @@ class CompanyVC: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.companyList = ["Apple mobile devices","Samsung mobile devices"]
+        self.companyList = ["Apple mobile devices","Samsung mobile devices", "Amazon mobile devices", "Microsoft mobile devices"]
         
         //create edit button
         let editBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditMode))
