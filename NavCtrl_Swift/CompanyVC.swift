@@ -31,7 +31,7 @@ class CompanyVC: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
-    func toggleEditMode() {
+    @objc func toggleEditMode() {
         if self.navigationItem.rightBarButtonItem?.title == "Edit" {
             self.tableView.setEditing(true, animated: true)
             self.navigationItem.rightBarButtonItem?.title = "Done"

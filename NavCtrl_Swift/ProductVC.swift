@@ -38,24 +38,58 @@ class ProductVC: UIViewController {
         self.tableView.reloadData()
         
         }
+        
+    }
+    
 
     
-        func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    
+    
+    override func didReceiveMemoryWarning() {
+            super.didReceiveMemoryWarning()
+                // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+            
+    @objc func toggleEditMode() {
+                if self.navigationItem.rightBarButtonItem?.title == "Edit" {
+                    self.tableView.setEditing(true, animated: true)
+                    self.navigationItem.rightBarButtonItem?.title = "Done"
+                } else {
+                    self.tableView.setEditing(false, animated: true)
+                    self.navigationItem.rightBarButtonItem?.title = "Edit"
+                }
+        
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func toggleEditMode() {
-        if self.navigationItem.rightBarButtonItem?.title == "Edit" {
-            self.tableView.setEditing(true, animated: true)
-            self.navigationItem.rightBarButtonItem?.title = "Done"
-        } else {
-            self.tableView.setEditing(false, animated: true)
-            self.navigationItem.rightBarButtonItem?.title = "Edit"
-        }
-    }
+ 
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -88,7 +122,14 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
         return cell
         
         }
-    }
+
+
+    
+    
+}
+
+
+
     /*
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -134,5 +175,5 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     }
 */
     
-    }
+
 
