@@ -17,6 +17,9 @@ class ProductVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//    let products = ["Apple iPad Pro", "Apple iPod Touch", "Apple iPhone", "Samsung Galaxy S9", "Samsung Galaxy Note", "Samsung Galaxy Tab", "Amazon Echo", "Amazon Alexa", "Amazon Fire HD", "Windows Phone 8", "Microsoft Nokia Lumia", "Window Surface"]
+        
         let editBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditMode))
         self.navigationItem.rightBarButtonItem = editBarButton
         // Do any additional setup after loading the view.
@@ -26,18 +29,18 @@ class ProductVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        if self.title == "Apple mobile devices" {
+        if self.title == "Apple Mobile Devices" {
             self.products = ["Apple iPad Pro", "Apple iPod Touch", "Apple iPhone"]
-        } else if self.title == "Samsung mobile devices" {
+        } else if self.title == "Samsung Mobile Devices" {
             self.products = ["Samsung Galaxy S9", "Samsung Galaxy Note", "Samsung Galaxy Tab"]
-        } else if self.title == "Amazon mobile devices" {
+        } else if self.title == "Amazon Mobile Devices" {
             self.products = ["Amazon Echo", "Amazon Alexa", "Amazon Fire HD"]
-        } else {
+        } else if self.title == "Microsoft Mobile Devices" {
             self.products = ["Windows Phone 8", "Microsoft Nokia Lumia", "Windows Surface"]
-            
-        self.tableView.reloadData()
-        
         }
+        
+        self.tableView.reloadData()
+
         
     }
     
@@ -108,7 +111,7 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
             return productCount
         } else {
             print("unknown number of rows... \"products\" property is nil!")
-            return 0
+            return 1
         }
     }
     
@@ -118,7 +121,10 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier) ?? UITableViewCell(style: .subtitle, reuseIdentifier: CellIdentifier)
         
         //configure the cell
-        cell.textLabel?.text = self.products?[indexPath.row]
+        if let product = products?[indexPath.row] {
+        cell.textLabel?.text = product
+        cell.imageView?.image = UIImage(named: product)
+        }
         return cell
         
         }

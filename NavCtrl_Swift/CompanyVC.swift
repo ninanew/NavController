@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CompanyVC: UIViewController{
+class CompanyVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     var companyList : [String]?
@@ -16,7 +16,7 @@ class CompanyVC: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.companyList = ["Apple mobile devices","Samsung mobile devices", "Amazon mobile devices", "Microsoft mobile devices"]
+        self.companyList = ["Apple Mobile Devices","Samsung Mobile Devices", "Amazon Mobile Devices", "Microsoft Mobile Devices"]
         
         //create edit button
         let editBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditMode))
@@ -95,8 +95,11 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier) ??
         UITableViewCell(style: .subtitle, reuseIdentifier: CellIdentifier)
         
+        
+        
         if let currentCompanyName = self.companyList?[indexPath.row] {
             cell.textLabel?.text = currentCompanyName
+            cell.imageView?.image = UIImage(named: currentCompanyName)
         } else {
             cell.textLabel?.text = "?"
         }
@@ -109,8 +112,12 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
         self.productViewController = ProductVC()
         if indexPath.row == 0 {
             self.productViewController?.title = "Apple Mobile Devices"
-        } else {
+        } else if indexPath.row == 1  {
             self.productViewController?.title = "Samsung Mobile Devices"
+        }  else if indexPath.row == 2 {
+            self.productViewController?.title = "Amazon Mobile Devices"
+        }  else if indexPath.row == 3 {
+            self.productViewController?.title = "Microsoft Mobile Devices"
         }
         self.navigationController?.pushViewController(self.productViewController!, animated: true)
     }
