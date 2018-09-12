@@ -13,17 +13,18 @@ class ProductVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     var products: [String]?
-
+    var webView: WebView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//    let products = ["Apple iPad Pro", "Apple iPod Touch", "Apple iPhone", "Samsung Galaxy S9", "Samsung Galaxy Note", "Samsung Galaxy Tab", "Amazon Echo", "Amazon Alexa", "Amazon Fire HD", "Windows Phone 8", "Microsoft Nokia Lumia", "Window Surface"]
         
         let editBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditMode))
         self.navigationItem.rightBarButtonItem = editBarButton
         // Do any additional setup after loading the view.
-    }
+        
+        
+        }
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +35,7 @@ class ProductVC: UIViewController {
         } else if self.title == "Samsung Mobile Devices" {
             self.products = ["Samsung Galaxy S9", "Samsung Galaxy Note", "Samsung Galaxy Tab"]
         } else if self.title == "Amazon Mobile Devices" {
-            self.products = ["Amazon Echo", "Amazon Alexa", "Amazon Fire HD"]
+            self.products = ["Amazon Echo Dot", "Amazon Echo", "Amazon Fire HD"]
         } else if self.title == "Microsoft Mobile Devices" {
             self.products = ["Windows Phone 8", "Microsoft Nokia Lumia", "Windows Surface"]
         }
@@ -76,27 +77,6 @@ class ProductVC: UIViewController {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -122,17 +102,30 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
         
         //configure the cell
         if let product = products?[indexPath.row] {
-        cell.textLabel?.text = product
-        cell.imageView?.image = UIImage(named: product)
+            cell.textLabel?.text = product
+            cell.imageView?.image = UIImage(named: product)
         }
         return cell
         
-        }
-
-
+    }
     
     
-}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        webView = WebView()
+        
+        webView?.title = products?[indexPath.row]
+        self.navigationController?.pushViewController(self.webView!, animated: true)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        } else if editingStyle == .insert {}
+
+    }
 
 
 
@@ -181,5 +174,5 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     }
 */
     
-
+}
 

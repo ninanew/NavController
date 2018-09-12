@@ -24,11 +24,24 @@ class CompanyVC: UIViewController {
         
         self.title = "Mobile Device Makers"
         // Do any additional setup after loading the view.
+        
+        
     }
-
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        } else if editingStyle == .insert {}
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    
     }
     
     @objc func toggleEditMode() {
@@ -39,7 +52,9 @@ class CompanyVC: UIViewController {
             self.tableView.setEditing(false, animated: true)
             self.navigationItem.rightBarButtonItem?.title = "Edit"
         }
+    
     }
+
 }
 
 // MARK: delegate & datasource methods
@@ -57,7 +72,10 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
             print("unknown number of rows... companyList is nil!")
             return 0
         }
+        
     }
+        
+        
     /*
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -120,10 +138,10 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
             self.productViewController?.title = "Microsoft Mobile Devices"
         }
         self.navigationController?.pushViewController(self.productViewController!, animated: true)
-    }
- 
-}
+        
+        }
 
+    }
     
-    
+
 
