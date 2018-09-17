@@ -13,6 +13,9 @@ import WebKit
 class WebView: UIViewController, WKNavigationDelegate {
     
 @IBOutlet weak var webView: WKWebView!
+
+    
+    
 // @IBAction weak var backButton: UIButton!
     
 // maybe switch statement between products and urls

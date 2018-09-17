@@ -11,6 +11,10 @@ import UIKit
 class CompanyVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
+    
+    
+    
+    
     var companyList : [String]?
     var productViewController : ProductVC?
 
@@ -25,17 +29,17 @@ class CompanyVC: UIViewController {
         self.title = "Mobile Device Makers"
         // Do any additional setup after loading the view.
         
-        
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-        } else if editingStyle == .insert {}
-        
-    }
+    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == UITableViewCellEditingStyle.delete {
+//            // Delete the row from the data source
+//            companyList?.remove(at: indexPath.row)
+//
+//        } else if editingStyle == .insert {}
+//
+//    }
     
     
     override func didReceiveMemoryWarning() {
@@ -76,30 +80,42 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
     }
         
         
-    /*
+    
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-    /*
+ 
+    
     // Override to support editing the table view.
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            companyList?.remove(at: indexPath.row)
+
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
-    */
-    /*
+ 
+    
+    
+  
     // Override to support rearranging the table view
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-    }
-    */
+     
+        let movedCompany = self.companyList![sourceIndexPath.row]
+        companyList?.remove(at: sourceIndexPath.row)
+        companyList?.insert(movedCompany, at: destinationIndexPath.row)
+        
+        
+     }
+ 
+    
+    
+    
     /*
     // Override to support conditional rearranging of the table view.
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -128,15 +144,20 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
     // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.productViewController = ProductVC()
-        if indexPath.row == 0 {
-            self.productViewController?.title = "Apple Mobile Devices"
-        } else if indexPath.row == 1  {
-            self.productViewController?.title = "Samsung Mobile Devices"
-        }  else if indexPath.row == 2 {
-            self.productViewController?.title = "Amazon Mobile Devices"
-        }  else if indexPath.row == 3 {
-            self.productViewController?.title = "Microsoft Mobile Devices"
-        }
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        self.productViewController?.title = cell?.textLabel?.text
+        
+//        if indexPath.row == 0 {
+//            self.productViewController?.title = "Apple Mobile Devices"
+//        } else if indexPath.row == 1  {
+//            self.productViewController?.title = "Samsung Mobile Devices"
+//        }  else if indexPath.row == 2 {
+//            self.productViewController?.title = "Amazon Mobile Devices"
+//        }  else if indexPath.row == 3 {
+//            self.productViewController?.title = "Microsoft Mobile Devices"
+//        }
         self.navigationController?.pushViewController(self.productViewController!, animated: true)
         
         }
