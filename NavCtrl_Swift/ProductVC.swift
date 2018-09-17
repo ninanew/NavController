@@ -152,13 +152,13 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
         
         
     }
-    /*
+    
     // Override to support conditional rearranging of the table view.
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return NO if you do not want the item to be re-orderable.
         return true
     }
-    */
+    
     /*
     // In a xib-based application, navigation from a table can be handled in didSelectRowAt..
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
