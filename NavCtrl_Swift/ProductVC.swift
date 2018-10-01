@@ -13,9 +13,9 @@ class ProductVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
+    var products: [Product]?
     
-    
-    var products: [String]?
+//    var products: [String]?
     var webView: WebView?
     
     override func viewDidLoad() {
@@ -33,19 +33,19 @@ class ProductVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        if self.title == "Apple Mobile Devices" {
-            self.products = ["Apple iPad Pro", "Apple iPod Touch", "Apple iPhone"]
-        } else if self.title == "Samsung Mobile Devices" {
-            self.products = ["Samsung Galaxy S9", "Samsung Galaxy Note", "Samsung Galaxy Tab"]
-        } else if self.title == "Amazon Mobile Devices" {
-            self.products = ["Amazon Echo Dot", "Amazon Echo", "Amazon Fire HD"]
-        } else if self.title == "Microsoft Mobile Devices" {
-            self.products = ["Windows Phone 8", "Microsoft Nokia Lumia", "Windows Surface"]
-        }
-        
-        self.tableView.reloadData()
-
-        
+//        if self.title == "Apple Mobile Devices" {
+//            self.products = ["Apple iPad Pro", "Apple iPod Touch", "Apple iPhone"]
+//        } else if self.title == "Samsung Mobile Devices" {
+//            self.products = ["Samsung Galaxy S9", "Samsung Galaxy Note", "Samsung Galaxy Tab"]
+//        } else if self.title == "Amazon Mobile Devices" {
+//            self.products = ["Amazon Echo Dot", "Amazon Echo", "Amazon Fire HD"]
+//        } else if self.title == "Microsoft Mobile Devices" {
+//            self.products = ["Windows Phone 8", "Microsoft Nokia Lumia", "Windows Surface"]
+//        }
+//
+//        self.tableView.reloadData()
+//
+//
     }
     
 
@@ -105,8 +105,8 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
         
         //configure the cell
         if let product = products?[indexPath.row] {
-            cell.textLabel?.text = product
-            cell.imageView?.image = UIImage(named: product)
+//            cell.textLabel?.text = product
+//            cell.imageView?.image = UIImage(named: product)
         }
         return cell
         
@@ -116,7 +116,7 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         webView = WebView()
         
-        webView?.title = products?[indexPath.row]
+ //       webView?.title = products?[indexPath.row]
         self.navigationController?.pushViewController(self.webView!, animated: true)
     }
     

@@ -17,6 +17,8 @@
 		EB1A3158213F0B500053651F /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A3157213F0B500053651F /* WebView.swift */; };
 		EB1A315E213F18880053651F /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1A315D213F18880053651F /* WebView.xib */; };
 		EB1A31602152B0CD0053651F /* OOP.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A315F2152B0CD0053651F /* OOP.swift */; };
+		EB1A316321628A7D0053651F /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A316221628A7D0053651F /* Company.swift */; };
+		EB1A316521628B300053651F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A316421628B300053651F /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		EB1A3157213F0B500053651F /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		EB1A315D213F18880053651F /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		EB1A315F2152B0CD0053651F /* OOP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OOP.swift; sourceTree = "<group>"; };
+		EB1A316221628A7D0053651F /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		EB1A316421628B300053651F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		9EF237AF1E5E351800FEFD4F /* NavCtrl_Swift */ = {
 			isa = PBXGroup;
 			children = (
+				EB1A316121628A490053651F /* Models */,
 				9EF237B01E5E351800FEFD4F /* AppDelegate.swift */,
 				EB1A315F2152B0CD0053651F /* OOP.swift */,
 				EB1A3157213F0B500053651F /* WebView.swift */,
@@ -101,6 +106,15 @@
 				9EF237C41E5E35AA00FEFD4F /* CompanyVC.xib */,
 			);
 			name = CompanyViewController;
+			sourceTree = "<group>";
+		};
+		EB1A316121628A490053651F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EB1A316221628A7D0053651F /* Company.swift */,
+				EB1A316421628B300053651F /* Product.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +198,8 @@
 				EB1A3158213F0B500053651F /* WebView.swift in Sources */,
 				9EF237B11E5E351800FEFD4F /* AppDelegate.swift in Sources */,
 				EB1A31602152B0CD0053651F /* OOP.swift in Sources */,
+				EB1A316321628A7D0053651F /* Company.swift in Sources */,
+				EB1A316521628B300053651F /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

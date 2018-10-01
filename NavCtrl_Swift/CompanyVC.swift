@@ -15,12 +15,56 @@ class CompanyVC: UIViewController {
     
     
     
-    var companyList : [String]?
+    var companyList : [Company]?
     var productViewController : ProductVC?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.companyList = ["Apple Mobile Devices","Samsung Mobile Devices", "Amazon Mobile Devices", "Microsoft Mobile Devices"]
+        
+        
+        var apple = Company(name: "Apple Mobile Devices", imageUrl: "Apple Mobile Devices", stockTicker: "", products: [Product]())
+        
+        let appleIPhone = Product(name: "Apple iPhone", imageUrl: "Apple iPhone")
+        let appleIPadPro = Product(name: "Apple iPad Pro", imageUrl: "Apple iPad Pro")
+        let appleIPadTouch = Product(name: "Apple iPad Touch", imageUrl: "Apple iPad Touch")
+        
+        
+        var samsung = Company(name: "Samsung Mobile Devices", imageUrl: "Samsung Mobile Devices", stockTicker: "", products: [Product]())
+        
+        let samsungGalaxyS = Product(name: "Samsung Galaxy S9", imageUrl: "Samsung Galaxy S9")
+        let samsungGalaxyTab = Product(name: "Samsung Galaxy Tab", imageUrl: "Samsung Galaxy Tab")
+        let samsungGalaxyNote = Product(name: "Samsung Galaxy Note", imageUrl: "Samsung Galaxy Note")
+        
+        
+        var amazon = Company(name: "Amazon Mobile Devices", imageUrl: "Amazon Mobile Devices", stockTicker: "", products: [Product]())
+        
+        let amazonEcho = Product(name: "Amazon Echo", imageUrl: "Amazon Echo")
+        let amazonFireHD = Product(name: "Amazon Fire HD", imageUrl: "Amazon Fire HD")
+        let amazonEchoDot = Product(name: "Amazon Echo Dot", imageUrl: "Amazon Echo Dot")
+        
+        
+        var microsoft = Company(name: "Microsoft Mobile Devices", imageUrl: "Microsoft Mobile Devices", stockTicker: "", products: [Product]())
+        
+        let microsoftNokiaLumia = Product(name: "Microsoft Nokia Lumia", imageUrl: "Microsoft Nokia Lumia")
+        let windowsPhone = Product(name: "Windows Phone 8", imageUrl: "Windows Phone 8")
+        let windowsSurface = Product(name: "Windows Surface", imageUrl: "Windows Surface")
+        
+
+        apple.products.append(appleIPhone)
+        apple.products.append(appleIPadPro)
+        apple.products.append(appleIPadTouch)
+        
+        samsung.products.append(samsungGalaxyS)
+        samsung.products.append(samsungGalaxyTab)
+        samsung.products.append(samsungGalaxyNote)
+        
+        amazon.products.append(amazonEcho)
+        amazon.products.append(amazonFireHD)
+        amazon.products.append(amazonEchoDot)
+        
+        microsoft.products.append(microsoftNokiaLumia)
+        microsoft.products.append(windowsPhone)
+        microsoft.products.append(windowsSurface)
         
         //create edit button
         let editBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditMode))
@@ -128,8 +172,10 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
         
         
         if let currentCompanyName = self.companyList?[indexPath.row] {
-            cell.textLabel?.text = currentCompanyName
-            cell.imageView?.image = UIImage(named: currentCompanyName)
+            cell.textLabel?.text = currentCompanyName.name
+            cell.imageView?.image = UIImage(named: currentCompanyName.imageUrl)
+//            cell.textLabel?.text = currentCompanyName
+//            cell.imageView?.image = UIImage(named: currentCompanyName)
         } else {
             cell.textLabel?.text = "?"
         }
@@ -141,9 +187,10 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.productViewController = ProductVC()
         
-        let cell = tableView.cellForRow(at: indexPath)
-        
-        self.productViewController?.title = cell?.textLabel?.text
+//        let cell = tableView.cellForRow(at: indexPath)
+        guard let currentCompany = companyList?[indexPath.row] else { return }
+        productViewController?.products = currentCompany.products
+//        self.productViewController?.title = cell?.textLabel?.text
         
 //        if indexPath.row == 0 {
 //            self.productViewController?.title = "Apple Mobile Devices"
