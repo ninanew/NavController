@@ -9,8 +9,10 @@
 import Foundation
 
 struct Company {
+    
     var name: String
     var imageUrl: String
     var stockTicker: String
     var products: [Product]
+    
 }

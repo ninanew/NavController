@@ -11,4 +11,5 @@ import Foundation
 struct Product {
     var name: String
     var imageUrl: String
+    var productURL: String
 }

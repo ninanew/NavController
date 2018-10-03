@@ -16,7 +16,6 @@ class ProductVC: UIViewController {
     var products: [Product]?
     
 //    var products: [String]?
-    var webView: WebView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,8 +104,8 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
         
         //configure the cell
         if let product = products?[indexPath.row] {
-//            cell.textLabel?.text = product
-//            cell.imageView?.image = UIImage(named: product)
+            cell.textLabel?.text = product.name
+            cell.imageView?.image = UIImage(named: product.name)
         }
         return cell
         
@@ -114,10 +113,13 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        webView = WebView()
+        let webView = WebView()
+        guard let products = products else { return }
+        let currentProduct = products[indexPath.row]
+        webView.urlStr = currentProduct.productURL
+        webView.title = currentProduct.name
+        self.navigationController?.pushViewController(webView, animated: true)
         
- //       webView?.title = products?[indexPath.row]
-        self.navigationController?.pushViewController(self.webView!, animated: true)
     }
     
     
