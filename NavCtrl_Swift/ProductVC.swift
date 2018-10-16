@@ -12,10 +12,11 @@ class ProductVC: UIViewController {
     
     
     @IBOutlet var tableView: UITableView!
+
     
     var products: [Product]?
+    // var products: [String]?
     
-//    var products: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()

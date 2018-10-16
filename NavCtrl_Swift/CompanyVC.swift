@@ -12,10 +12,13 @@ class CompanyVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
-    
     var companyList : [Company]?
     var productViewController : ProductVC?
 
+    
+    let dao = DAO.share
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +32,8 @@ class CompanyVC: UIViewController {
         self.title = "Mobile Device Makers"
         // Do any additional setup after loading the view.
         
-        let dao = DAO.share
+//        let dao = DAO.share
+        
         dao.createCompany()
         companyList = dao.companies
     }
@@ -75,6 +79,7 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let companyCount = self.companyList?.count {
             return companyCount
+//            return dao.companies.count
         } else {
             print("unknown number of rows... companyList is nil!")
             return 0
@@ -96,10 +101,17 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             // Delete the row from the data source
             companyList?.remove(at: indexPath.row)
-
+            
+            dao.deleteElementsAt(index: indexPath.row)
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
+        
+        
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            
+            dao.insert(index: indexPath.row)
+            
         }
     }
  

@@ -12,7 +12,21 @@ class DAO {
     
     static let share = DAO()
     
+    
+    private init() {}
+    
+
     var companies = [Company]()
+    
+    func deleteElementsAt(index: Int) {
+        companies.remove(at: index)
+    }
+    
+    func insert(index: Int) {
+        companies.append(Company)
+        
+    
+    }
     
     func createCompany() {
         var apple = Company(name: "Apple Mobile Devices", imageUrl: "Apple Mobile Devices", stockTicker: "", products: [Product]())
@@ -27,7 +41,6 @@ class DAO {
         let samsungGalaxyS = Product(name: "Samsung Galaxy S9", imageUrl: "Samsung Galaxy S9", productURL: "https://www.samsung.com/global/galaxy/galaxy-s9/")
         let samsungGalaxyTab = Product(name: "Samsung Galaxy Tab", imageUrl: "Samsung Galaxy Tab", productURL: "https://www.samsung.com/us/explore/tab-s4/?sem-mktg-pfs-tab-80118-22217")
         let samsungGalaxyNote = Product(name: "Samsung Galaxy Note", imageUrl: "Samsung Galaxy Note", productURL:"https://www.samsung.com/us/mobile/galaxy-note9/")
-        
         
         var amazon = Company(name: "Amazon Mobile Devices", imageUrl: "Amazon Mobile Devices", stockTicker: "", products: [Product]())
         
@@ -63,12 +76,10 @@ class DAO {
         companies.append(samsung)
         companies.append(amazon)
         companies.append(microsoft)
-        
-    
-
+       
     }
     
     
     
-    
 }
+
