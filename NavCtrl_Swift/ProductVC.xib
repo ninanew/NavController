@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductVC" customModule="NavCtrl_Swift" customModuleProvider="target">
             <connections>
+                <outlet property="addButton" destination="WHp-JP-wAA" id="Cqf-Bu-ZWT"/>
+                <outlet property="addProductButton" destination="WHp-JP-wAA" id="xe8-zC-A8e"/>
                 <outlet property="tableView" destination="O80-Yy-RVt" id="W8g-zk-Chj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,20 +23,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O80-Yy-RVt">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="myp-xf-sL0"/>
                         <outlet property="delegate" destination="-1" id="NpA-yR-dR5"/>
                     </connections>
                 </tableView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCT-i4-MRQ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="Title" id="ELN-z1-Vzk">
+                            <barButtonItem key="rightBarButtonItem" title="+" id="WHp-JP-wAA"/>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="O80-Yy-RVt" secondAttribute="bottom" id="0rU-s5-yW6"/>
                 <constraint firstItem="O80-Yy-RVt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1LD-rO-IH8"/>
-                <constraint firstItem="O80-Yy-RVt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BKj-iP-zOj"/>
+                <constraint firstItem="O80-Yy-RVt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="BKj-iP-zOj"/>
+                <constraint firstAttribute="trailing" secondItem="gCT-i4-MRQ" secondAttribute="trailing" id="HBR-6Y-kGL"/>
+                <constraint firstItem="gCT-i4-MRQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KOI-gq-y3t"/>
                 <constraint firstAttribute="trailing" secondItem="O80-Yy-RVt" secondAttribute="trailing" id="fA2-sZ-wUh"/>
+                <constraint firstItem="gCT-i4-MRQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vHr-dW-8zM"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="127.5"/>
         </view>

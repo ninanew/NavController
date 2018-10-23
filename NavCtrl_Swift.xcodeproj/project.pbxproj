@@ -19,6 +19,10 @@
 		EB1A316321628A7D0053651F /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A316221628A7D0053651F /* Company.swift */; };
 		EB1A316521628B300053651F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A316421628B300053651F /* Product.swift */; };
 		EB88A3902165483E002A0869 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB88A38F2165483E002A0869 /* DAO.swift */; };
+		EB88A3A02176883C002A0869 /* EditProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB88A39F2176883C002A0869 /* EditProduct.swift */; };
+		EB88A3A22176884A002A0869 /* EditCompanyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB88A3A12176884A002A0869 /* EditCompanyVC.xib */; };
+		EB88A3A42176885C002A0869 /* EditProductVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB88A3A32176885C002A0869 /* EditProductVC.xib */; };
+		EB88A3A6217E7852002A0869 /* EditCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB88A3A5217E7852002A0869 /* EditCompany.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		EB1A316221628A7D0053651F /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		EB1A316421628B300053651F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		EB88A38F2165483E002A0869 /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
+		EB88A39F2176883C002A0869 /* EditProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProduct.swift; sourceTree = "<group>"; };
+		EB88A3A12176884A002A0869 /* EditCompanyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCompanyVC.xib; sourceTree = "<group>"; };
+		EB88A3A32176885C002A0869 /* EditProductVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProductVC.xib; sourceTree = "<group>"; };
+		EB88A3A5217E7852002A0869 /* EditCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCompany.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,10 @@
 				9EF237CC1E5E35DB00FEFD4F /* CompanyViewController */,
 				9EF237CB1E5E35CD00FEFD4F /* ProductViewController */,
 				EB88A38F2165483E002A0869 /* DAO.swift */,
+				EB88A3A5217E7852002A0869 /* EditCompany.swift */,
+				EB88A3A12176884A002A0869 /* EditCompanyVC.xib */,
+				EB88A39F2176883C002A0869 /* EditProduct.swift */,
+				EB88A3A32176885C002A0869 /* EditProductVC.xib */,
 				9EF237C21E5E356100FEFD4F /* Supporting Files */,
 			);
 			path = NavCtrl_Swift;
@@ -180,7 +192,9 @@
 			files = (
 				9EF237CA1E5E35C000FEFD4F /* ProductVC.xib in Resources */,
 				EB1A315E213F18880053651F /* WebView.xib in Resources */,
+				EB88A3A22176884A002A0869 /* EditCompanyVC.xib in Resources */,
 				9EF237BB1E5E351800FEFD4F /* LaunchScreen.storyboard in Resources */,
+				EB88A3A42176885C002A0869 /* EditProductVC.xib in Resources */,
 				9EF237B81E5E351800FEFD4F /* Assets.xcassets in Resources */,
 				9EF237C61E5E35AA00FEFD4F /* CompanyVC.xib in Resources */,
 			);
@@ -194,12 +208,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB88A3902165483E002A0869 /* DAO.swift in Sources */,
+				EB88A3A02176883C002A0869 /* EditProduct.swift in Sources */,
 				9EF237C91E5E35C000FEFD4F /* ProductVC.swift in Sources */,
 				9EF237C51E5E35AA00FEFD4F /* CompanyVC.swift in Sources */,
 				EB1A3158213F0B500053651F /* WebView.swift in Sources */,
 				9EF237B11E5E351800FEFD4F /* AppDelegate.swift in Sources */,
 				EB1A316321628A7D0053651F /* Company.swift in Sources */,
 				EB1A316521628B300053651F /* Product.swift in Sources */,
+				EB88A3A6217E7852002A0869 /* EditCompany.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="EditProductVC">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DDM-JC-Y3H" userLabel="TextField2">
+                    <rect key="frame" x="61" y="210" width="253" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mn0-wm-MBr" userLabel="TextField3">
+                    <rect key="frame" x="61" y="248" width="253" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVE-eL-oWm">
+                    <rect key="frame" x="15" y="44" width="48" height="30"/>
+                    <state key="normal" title="Cancel"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHc-oF-8uN">
+                    <rect key="frame" x="319" y="44" width="34" height="30"/>
+                    <state key="normal" title="Save"/>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M9O-Fw-ju0" userLabel="TextField1">
+                    <rect key="frame" x="61" y="172" width="253" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DDM-JC-Y3H" firstAttribute="top" secondItem="M9O-Fw-ju0" secondAttribute="bottom" constant="8" id="63D-Nm-8gD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="M9O-Fw-ju0" secondAttribute="trailing" constant="61" id="70w-F0-J3E"/>
+                <constraint firstItem="Mn0-wm-MBr" firstAttribute="top" secondItem="DDM-JC-Y3H" secondAttribute="bottom" constant="8" id="A9a-Oc-r5H"/>
+                <constraint firstItem="jVE-eL-oWm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="ACZ-ox-f4T"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="jVE-eL-oWm" secondAttribute="bottom" constant="593" id="AJO-Va-i5f"/>
+                <constraint firstItem="qHc-oF-8uN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="Bsp-lE-6Td"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DDM-JC-Y3H" secondAttribute="trailing" constant="61" id="JJP-k8-ABc"/>
+                <constraint firstItem="Mn0-wm-MBr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="61" id="L2q-Kn-pYM"/>
+                <constraint firstItem="jVE-eL-oWm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="YbT-px-Fi3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qHc-oF-8uN" secondAttribute="trailing" constant="22" id="aiN-wd-lEA"/>
+                <constraint firstItem="M9O-Fw-ju0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="152" id="dDH-Tt-c5x"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Mn0-wm-MBr" secondAttribute="bottom" constant="389" id="jr3-94-Kvw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Mn0-wm-MBr" secondAttribute="trailing" constant="61" id="l8A-Tf-c0N"/>
+                <constraint firstItem="M9O-Fw-ju0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="61" id="ro5-Nu-jNb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="qHc-oF-8uN" secondAttribute="bottom" constant="593" id="toy-HF-Sb0"/>
+                <constraint firstItem="DDM-JC-Y3H" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="61" id="uST-UB-HgQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="57" y="213"/>
+        </view>
+    </objects>
+</document>

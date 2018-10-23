@@ -11,6 +11,7 @@ import UIKit
 class CompanyVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
+
     
     var companyList : [Company]?
     var productViewController : ProductVC?
@@ -32,7 +33,7 @@ class CompanyVC: UIViewController {
         self.title = "Mobile Device Makers"
         // Do any additional setup after loading the view.
         
-//        let dao = DAO.share
+        let dao = DAO.share
         
         dao.createCompany()
         companyList = dao.companies
@@ -55,6 +56,9 @@ class CompanyVC: UIViewController {
     
     }
     
+    
+    @IBOutlet weak var addCompanyButton: UIBarButtonItem!
+    
     @objc func toggleEditMode() {
         if self.navigationItem.rightBarButtonItem?.title == "Edit" {
             self.tableView.setEditing(true, animated: true)
@@ -71,6 +75,10 @@ class CompanyVC: UIViewController {
 // MARK: delegate & datasource methods
 
 extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    
+    
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

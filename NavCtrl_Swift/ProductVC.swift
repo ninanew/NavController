@@ -59,6 +59,8 @@ class ProductVC: UIViewController {
     }
     
     
+    @IBOutlet weak var addProductButton: UIBarButtonItem!
+    
     
             
     @objc func toggleEditMode() {

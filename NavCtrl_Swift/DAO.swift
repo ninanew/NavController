@@ -19,11 +19,13 @@ class DAO {
     var companies = [Company]()
     
     func deleteElementsAt(index: Int) {
+        
         companies.remove(at: index)
     }
     
     func insert(index: Int) {
-        companies.append(Company)
+        
+     //   companies.append()
         
     
     }
