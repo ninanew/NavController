@@ -15,7 +15,6 @@
 		9EF237C91E5E35C000FEFD4F /* ProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF237C71E5E35C000FEFD4F /* ProductVC.swift */; };
 		9EF237CA1E5E35C000FEFD4F /* ProductVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF237C81E5E35C000FEFD4F /* ProductVC.xib */; };
 		EB1A3158213F0B500053651F /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A3157213F0B500053651F /* WebView.swift */; };
-		EB1A315E213F18880053651F /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1A315D213F18880053651F /* WebView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		9EF237C71E5E35C000FEFD4F /* ProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
 		9EF237C81E5E35C000FEFD4F /* ProductVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductVC.xib; sourceTree = "<group>"; };
 		EB1A3157213F0B500053651F /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		EB1A315D213F18880053651F /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +62,6 @@
 			children = (
 				9EF237B01E5E351800FEFD4F /* AppDelegate.swift */,
 				EB1A3157213F0B500053651F /* WebView.swift */,
-				EB1A315D213F18880053651F /* WebView.xib */,
 				9EF237CC1E5E35DB00FEFD4F /* CompanyViewController */,
 				9EF237CB1E5E35CD00FEFD4F /* ProductViewController */,
 				9EF237C21E5E356100FEFD4F /* Supporting Files */,
@@ -162,7 +159,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EF237CA1E5E35C000FEFD4F /* ProductVC.xib in Resources */,
-				EB1A315E213F18880053651F /* WebView.xib in Resources */,
 				9EF237BB1E5E351800FEFD4F /* LaunchScreen.storyboard in Resources */,
 				9EF237B81E5E351800FEFD4F /* Assets.xcassets in Resources */,
 				9EF237C61E5E35AA00FEFD4F /* CompanyVC.xib in Resources */,
