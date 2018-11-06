@@ -15,7 +15,6 @@
 		9EF237C91E5E35C000FEFD4F /* ProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF237C71E5E35C000FEFD4F /* ProductVC.swift */; };
 		9EF237CA1E5E35C000FEFD4F /* ProductVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF237C81E5E35C000FEFD4F /* ProductVC.xib */; };
 		EB1A3158213F0B500053651F /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A3157213F0B500053651F /* WebView.swift */; };
-<<<<<<< HEAD
 		EB1A315E213F18880053651F /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1A315D213F18880053651F /* WebView.xib */; };
 		EB1A316321628A7D0053651F /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A316221628A7D0053651F /* Company.swift */; };
 		EB1A316521628B300053651F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1A316421628B300053651F /* Product.swift */; };
@@ -24,8 +23,6 @@
 		EB88A3A22176884A002A0869 /* EditCompanyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB88A3A12176884A002A0869 /* EditCompanyVC.xib */; };
 		EB88A3A42176885C002A0869 /* EditProductVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB88A3A32176885C002A0869 /* EditProductVC.xib */; };
 		EB88A3A6217E7852002A0869 /* EditCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB88A3A5217E7852002A0869 /* EditCompany.swift */; };
-=======
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +36,6 @@
 		9EF237C71E5E35C000FEFD4F /* ProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
 		9EF237C81E5E35C000FEFD4F /* ProductVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductVC.xib; sourceTree = "<group>"; };
 		EB1A3157213F0B500053651F /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		EB1A315D213F18880053651F /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		EB1A316221628A7D0053651F /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		EB1A316421628B300053651F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -48,8 +44,6 @@
 		EB88A3A12176884A002A0869 /* EditCompanyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCompanyVC.xib; sourceTree = "<group>"; };
 		EB88A3A32176885C002A0869 /* EditProductVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProductVC.xib; sourceTree = "<group>"; };
 		EB88A3A5217E7852002A0869 /* EditCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCompany.swift; sourceTree = "<group>"; };
-=======
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,11 +190,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EF237CA1E5E35C000FEFD4F /* ProductVC.xib in Resources */,
-<<<<<<< HEAD
 				EB1A315E213F18880053651F /* WebView.xib in Resources */,
 				EB88A3A22176884A002A0869 /* EditCompanyVC.xib in Resources */,
-=======
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
 				9EF237BB1E5E351800FEFD4F /* LaunchScreen.storyboard in Resources */,
 				EB88A3A42176885C002A0869 /* EditProductVC.xib in Resources */,
 				9EF237B81E5E351800FEFD4F /* Assets.xcassets in Resources */,
