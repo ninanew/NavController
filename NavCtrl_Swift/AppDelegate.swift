@@ -13,16 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var navigationController: UINavigationController?
-
+    //mind you spacing - keep it consistent
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //do you understand all this? if not, let's discuss, it's pretty important. I have had to do this to every single app I've ever written
         let rootController = CompanyVC()
-        self.navigationController = UINavigationController(rootViewController: rootController)
-        let screenRect = UIScreen.main.bounds
-        self.window = UIWindow(frame: screenRect)
-        self.window?.rootViewController = self.navigationController
-        self.window?.makeKeyAndVisible()
+        navigationController = UINavigationController(rootViewController: rootController)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        //don't use self. unless it's within a closure
         
         return true
     }
