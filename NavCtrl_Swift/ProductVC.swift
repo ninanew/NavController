@@ -9,26 +9,32 @@
 import UIKit
 
 //don't forget - if you aren't going to be deriving subclasses from a class, mark it final
+
 final class ProductVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
 
     
-<<<<<<< HEAD
     var products: [Product]?
-    // var products: [String]?
     
-=======
-    var products: [String]?
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let editBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditMode))
-        self.navigationItem.rightBarButtonItem = editBarButton
+//        self.navigationItem.rightBarButtonItem = editBarButton
         
-<<<<<<< HEAD
+        let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(toggleAdd))
+        self.navigationItem.rightBarButtonItem = addBarButton
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+            super.didReceiveMemoryWarning()
+                // Dispose of any resources that can be recreated.
+    
+    
+//
 //        if self.title == "Apple Mobile Devices" {
 //            self.products = ["Apple iPad Pro", "Apple iPod Touch", "Apple iPhone"]
 //        } else if self.title == "Samsung Mobile Devices" {
@@ -38,50 +44,29 @@ final class ProductVC: UIViewController {
 //        } else if self.title == "Microsoft Mobile Devices" {
 //            self.products = ["Windows Phone 8", "Microsoft Nokia Lumia", "Windows Surface"]
 //        }
-//
-//        self.tableView.reloadData()
-//
-//
-    }
-    
-
-    
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
-                // Dispose of any resources that can be recreated.
-    }
-    
-    
-    @IBOutlet weak var addProductButton: UIBarButtonItem!
-    
-    
-=======
-        if self.title == "Apple Mobile Devices" {
-            self.products = ["Apple iPad Pro", "Apple iPod Touch", "Apple iPhone"]
-        } else if self.title == "Samsung Mobile Devices" {
-            self.products = ["Samsung Galaxy S9", "Samsung Galaxy Note", "Samsung Galaxy Tab"]
-        } else if self.title == "Amazon Mobile Devices" {
-            self.products = ["Amazon Echo Dot", "Amazon Echo", "Amazon Fire HD"]
-        } else if self.title == "Microsoft Mobile Devices" {
-            self.products = ["Windows Phone 8", "Microsoft Nokia Lumia", "Windows Surface"]
-        }
         
-        self.tableView.reloadData()
+//        self.tableView.reloadData()
     }
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
             
-    @objc func toggleEditMode() {
-        if self.navigationItem.rightBarButtonItem?.title == "Edit" {
+    @objc private func toggleEditMode() {
+        if navigationItem.rightBarButtonItem?.title == "Edit" {
             self.tableView.setEditing(true, animated: true)
             self.navigationItem.rightBarButtonItem?.title = "Done"
         } else {
             self.tableView.setEditing(false, animated: true)
             self.navigationItem.rightBarButtonItem?.title = "Edit"
         }
+        
     }
+    
+    @objc private func toggleAdd() {
+        let addVC = AddProductVC()
+        guard let title = self.title else { return }
+        addVC.companyName = title
+        self.navigationController?.pushViewController(addVC, animated: true)
+    }
+
+
 }
 
 extension ProductVC: UITableViewDataSource, UITableViewDelegate {
@@ -110,22 +95,21 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-<<<<<<< HEAD
-        let webView = WebView()
+
         guard let products = products else { return }
         let currentProduct = products[indexPath.row]
-        webView.urlStr = currentProduct.productURL
+        let webView = WebView(with: currentProduct.productURL)
         webView.title = currentProduct.name
         self.navigationController?.pushViewController(webView, animated: true)
-        
-=======
-        //get your title
-        if let productTitle = products?[indexPath.row] {
-            let webView = WebView(withTitle: productTitle)
-            //only use 'self.' syntax inside of a closure. it is taboo otherwise in swift
-            navigationController?.pushViewController(webView, animated: true)
-        }
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
+//        
+//
+//        //get your title
+//        if let productTitle = products[indexPath.row] {
+//            let webView = WebView(withTitle: productTitle)
+//            //only use 'self.' syntax inside of a closure. it is taboo otherwise in swift
+//            navigationController?.pushViewController(webView, animated: true)
+//        }
+
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -141,7 +125,7 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
-        return true
+        return false //true before 
     }
  
     // Override to support rearranging the table view.

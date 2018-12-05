@@ -6,15 +6,16 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyVC" customModule="NavCtrl_Swift" customModuleProvider="target">
             <connections>
-                <outlet property="addButton" destination="q26-up-ODB" id="MiP-wT-IVr"/>
-                <outlet property="addCompanyButton" destination="q26-up-ODB" id="mrQ-1w-CNi"/>
+                <outlet property="placeHolder" destination="WdF-od-mFz" id="QoV-yr-AQI"/>
+                <outlet property="placeHolderImage" destination="Z9t-pz-Eph" id="OdH-aI-Tqe"/>
                 <outlet property="tableView" destination="OL1-kY-Ffi" id="Fii-JW-foJ"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="erS-0c-sx2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OL1-kY-Ffi">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OL1-kY-Ffi">
                     <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -34,22 +35,56 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <items>
                         <navigationItem title="Title" id="PNP-9C-jbt">
-                            <barButtonItem key="rightBarButtonItem" title="+" id="q26-up-ODB"/>
+                            <barButtonItem key="leftBarButtonItem" title="Edit" id="D0B-8T-lgV"/>
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WdF-od-mFz">
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently don't have any companies added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBb-g2-CYP">
+                            <rect key="frame" x="8" y="295" width="359" height="65"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="65" id="cqK-Pk-XAH"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Trending Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Z9t-pz-Eph" userLabel="placeHolderImage">
+                            <rect key="frame" x="58" y="100" width="259" height="187"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="QBb-g2-CYP" secondAttribute="trailing" constant="8" id="NJZ-eB-neo"/>
+                        <constraint firstItem="Z9t-pz-Eph" firstAttribute="leading" secondItem="WdF-od-mFz" secondAttribute="leading" constant="58" id="ayG-fQ-h3Y"/>
+                        <constraint firstItem="Z9t-pz-Eph" firstAttribute="height" secondItem="WdF-od-mFz" secondAttribute="height" multiplier="0.3" id="dRh-bu-ilI"/>
+                        <constraint firstItem="Z9t-pz-Eph" firstAttribute="top" secondItem="WdF-od-mFz" secondAttribute="top" constant="100" id="e77-m9-lr5"/>
+                        <constraint firstItem="QBb-g2-CYP" firstAttribute="top" secondItem="Z9t-pz-Eph" secondAttribute="bottom" constant="8" id="hEc-3O-kYO"/>
+                        <constraint firstAttribute="trailing" secondItem="Z9t-pz-Eph" secondAttribute="trailing" constant="58" id="hXX-8w-HpZ"/>
+                        <constraint firstItem="QBb-g2-CYP" firstAttribute="leading" secondItem="WdF-od-mFz" secondAttribute="leading" constant="8" id="xRD-sC-wLL"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="OL1-kY-Ffi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8ay-UQ-nsv"/>
                 <constraint firstAttribute="trailing" secondItem="OL1-kY-Ffi" secondAttribute="trailing" id="GBt-7V-LRC"/>
                 <constraint firstItem="OL1-kY-Ffi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="NAg-sp-bVr"/>
+                <constraint firstAttribute="bottom" secondItem="WdF-od-mFz" secondAttribute="bottom" id="VU7-wP-veA"/>
                 <constraint firstItem="6uL-ci-1fo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aoK-DX-Cci"/>
                 <constraint firstItem="6uL-ci-1fo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dKm-vY-54O"/>
+                <constraint firstItem="WdF-od-mFz" firstAttribute="top" secondItem="6uL-ci-1fo" secondAttribute="bottom" id="hhX-oY-Uck"/>
+                <constraint firstItem="WdF-od-mFz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="na6-st-j8J"/>
                 <constraint firstAttribute="bottom" secondItem="OL1-kY-Ffi" secondAttribute="bottom" id="usa-cZ-DrA"/>
                 <constraint firstAttribute="trailing" secondItem="6uL-ci-1fo" secondAttribute="trailing" id="yfG-Bk-2ZA"/>
+                <constraint firstAttribute="trailing" secondItem="WdF-od-mFz" secondAttribute="trailing" id="zJB-QY-INC"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="127.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="Trending Arrow" width="512" height="512"/>
+    </resources>
 </document>

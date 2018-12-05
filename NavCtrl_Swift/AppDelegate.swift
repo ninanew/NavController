@@ -13,14 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var navigationController: UINavigationController?
-    //mind you spacing - keep it consistent
+    //mind your spacing - keep it consistent
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         //do you understand all this? if not, let's discuss, it's pretty important. I have had to do this to every single app I've ever written
+        
         let rootController = CompanyVC()
+        
         navigationController = UINavigationController(rootViewController: rootController)
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.39, green:0.78, blue:0.39, alpha:1.0)
+        navigationController?.navigationBar.tintColor = .white
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

@@ -8,45 +8,81 @@
 
 import UIKit
 
-final class CompanyVC: UIViewController {
+class CompanyVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
-<<<<<<< HEAD
-
-    
+    @IBOutlet weak var placeHolder: UIView!
+    @IBOutlet weak var placeHolderImage: UIImageView!
     var companyList : [Company]?
     var productViewController : ProductVC?
+    var editedCompanyView : EditCompanyVC?
 
     
     let dao = DAO.share
     
+//    let placeHolderImage = UIImage(named: "Trending Arrow")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-       
-        
-=======
     //no reason to have this be optional when you can initialize it right here
-    var companyList = ["Apple Mobile Devices","Samsung Mobile Devices", "Amazon Mobile Devices", "Microsoft Mobile Devices"]
-    var productViewController : ProductVC?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
+       // companyList = ["Apple Mobile Devices","Samsung Mobile Devices", "Amazon Mobile Devices", "Microsoft Mobile Devices"]
+  
         //create edit button
-        let editBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditMode))
-        self.navigationItem.rightBarButtonItem = editBarButton
+//        let editBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditMode))
+//        let editingButton = editButtonItem
+//        self.navigationItem.leftBarButtonItem = editBarButton
+        self.navigationItem.leftBarButtonItem = editButtonItem
+        
+        self.navigationController?.navigationBar.backgroundColor = .green
+        self.navigationController?.navigationBar.tintColor = .white
+
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(toggleAdd))
+        
+        self.navigationItem.rightBarButtonItem = addButton
         
         self.title = "Mobile Device Makers"
-<<<<<<< HEAD
+    
         // Do any additional setup after loading the view.
         
-        let dao = DAO.share
-        
         dao.createCompany()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         companyList = dao.companies
+        tableView.reloadData()
+        
+        isPlaceHolderHidden()
+
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+            tableView.setEditing(editing, animated: editing)
+    }
+    
+    
+    
+    func isPlaceHolderHidden() {
+        if companyList?.count == nil || companyList?.count == 0 {
+            placeHolder.isHidden = false
+        } else {
+            placeHolder.isHidden = true
+        }
+    
+    }
+    
+   @objc func toggleAdd() {
+    let addCompanyVC = AddCompanyVC()
+    self.navigationController?.pushViewController(addCompanyVC, animated: true)
+    
+    
+//     print("Hello WORLD!")
+    
     }
     
     
@@ -64,50 +100,38 @@ final class CompanyVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     
-=======
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
     }
     
-    
-    @IBOutlet weak var addCompanyButton: UIBarButtonItem!
-    
     @objc func toggleEditMode() {
-        if self.navigationItem.rightBarButtonItem?.title == "Edit" {
+        if self.navigationItem.leftBarButtonItem?.title == "Edit" {
             self.tableView.setEditing(true, animated: true)
-            self.navigationItem.rightBarButtonItem?.title = "Done"
+            self.navigationItem.leftBarButtonItem?.title = "Done"
+            isEditing = true
         } else {
             self.tableView.setEditing(false, animated: true)
-            self.navigationItem.rightBarButtonItem?.title = "Edit"
+            self.navigationItem.leftBarButtonItem?.title = "Edit"
+            isEditing = false
         }
+        
+        isPlaceHolderHidden()
     }
 }
 
 extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
     
-<<<<<<< HEAD
-    
-    
-    
-
-=======
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-<<<<<<< HEAD
         if let companyCount = self.companyList?.count {
             return companyCount
-//            return dao.companies.count
+
         } else {
             print("unknown number of rows... companyList is nil!")
             return 0
         }
-        
-=======
-        return companyList.count
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
+
     }
     
     // Override to support conditional editing of the table view.
@@ -120,30 +144,27 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-<<<<<<< HEAD
             companyList?.remove(at: indexPath.row)
             
             dao.deleteElementsAt(index: indexPath.row)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
-        
+            isPlaceHolderHidden()
         
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             
             dao.insert(index: indexPath.row)
             
-=======
-            companyList.remove(at: indexPath.row)
+            companyList!.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
         }
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedCompany = self.companyList[sourceIndexPath.row]
-        companyList.remove(at: sourceIndexPath.row)
-        companyList.insert(movedCompany, at: destinationIndexPath.row)
+        let movedCompany = self.companyList![sourceIndexPath.row]
+        companyList!.remove(at: sourceIndexPath.row)
+        companyList!.insert(movedCompany, at: destinationIndexPath.row)
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -155,49 +176,40 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
         let CellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier) ?? UITableViewCell(style: .subtitle, reuseIdentifier: CellIdentifier)
         
-        let currentCompanyName = self.companyList[indexPath.row]
-        cell.textLabel?.text = currentCompanyName
-        cell.imageView?.image = UIImage(named: currentCompanyName)
-        
-<<<<<<< HEAD
         
         if let currentCompany = self.companyList?[indexPath.row] {
             cell.textLabel?.text = currentCompany.name
             cell.imageView?.image = UIImage(named: currentCompany.imageUrl)
-//            cell.textLabel?.text = currentCompanyName
-//            cell.imageView?.image = UIImage(named: currentCompanyName)
+
         } else {
             cell.textLabel?.text = "?"
         }
-       return cell
-=======
+       
         return cell
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
+       
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.productViewController = ProductVC()
         
-<<<<<<< HEAD
-//        let cell = tableView.cellForRow(at: indexPath)
         guard let currentCompany = companyList?[indexPath.row] else { return }
-        productViewController?.products = currentCompany.products
-        self.productViewController?.title = currentCompany.name
+        if isEditing {
+            self.editedCompanyView = EditCompanyVC()
+            self.editedCompanyView?.title = currentCompany.name
+            editedCompanyView?.currentCompany = currentCompany
+            self.navigationController?.pushViewController(self.editedCompanyView!, animated: true)
+        } else {
+            self.productViewController = ProductVC()
+            self.productViewController?.title = currentCompany.name
+
+            self.navigationController?.pushViewController(self.productViewController!, animated: true)
+            
         
-//        if indexPath.row == 0 {
-//            self.productViewController?.title = "Apple Mobile Devices"
-//        } else if indexPath.row == 1  {
-//            self.productViewController?.title = "Samsung Mobile Devices"
-//        }  else if indexPath.row == 2 {
-//            self.productViewController?.title = "Amazon Mobile Devices"
-//        }  else if indexPath.row == 3 {
-//            self.productViewController?.title = "Microsoft Mobile Devices"
-//        }
-=======
-        let cell = tableView.cellForRow(at: indexPath)
+        }
         
-        self.productViewController?.title = cell?.textLabel?.text
->>>>>>> 8bbe0ef0ab3a964b54068ab060e4310b64041f8b
-        self.navigationController?.pushViewController(self.productViewController!, animated: true)
     }
+    
 }
+
+
+
+

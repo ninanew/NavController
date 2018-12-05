@@ -23,6 +23,22 @@ class DAO {
         companies.remove(at: index)
     }
     
+    func addCompany(name: String, ticker: String, imageUrl: String) {
+        let company = Company(name: name, imageUrl: imageUrl, stockTicker: ticker, products: [Product]())
+        companies.append(company)
+    }
+    
+    func addProduct(for companyName: String, name: String, imageUrl: String, productURL: String) {
+        
+        let product = Product(name: name, imageUrl: imageUrl, productURL: productURL)
+        
+        for (index, company) in companies.enumerated() {
+            if companyName == company.name {
+                companies[index].products.append(product)
+            }
+        }
+    }
+    
     func insert(index: Int) {
         
      //   companies.append()
