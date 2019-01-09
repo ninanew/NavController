@@ -13,6 +13,10 @@ class CompanyVC: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var placeHolder: UIView!
     @IBOutlet weak var placeHolderImage: UIImageView!
+    @IBOutlet weak var addCompanyButton: UIButton!
+    
+    
+    
     var companyList : [Company]?
     var productViewController : ProductVC?
     var editedCompanyView : EditCompanyVC?
@@ -20,29 +24,22 @@ class CompanyVC: UIViewController {
     
     let dao = DAO.share
     
-//    let placeHolderImage = UIImage(named: "Trending Arrow")
-    
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-    //no reason to have this be optional when you can initialize it right here
-       // companyList = ["Apple Mobile Devices","Samsung Mobile Devices", "Amazon Mobile Devices", "Microsoft Mobile Devices"]
-  
-        //create edit button
-//        let editBarButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditMode))
-//        let editingButton = editButtonItem
-//        self.navigationItem.leftBarButtonItem = editBarButton
         self.navigationItem.leftBarButtonItem = editButtonItem
         
         self.navigationController?.navigationBar.backgroundColor = .green
         self.navigationController?.navigationBar.tintColor = .white
 
-        
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(toggleAdd))
+        addCompanyButton.addTarget(self,  action: #selector(toggleAdd), for: .touchUpInside)
         
         self.navigationItem.rightBarButtonItem = addButton
         
         self.title = "Mobile Device Makers"
+        
+      
     
         // Do any additional setup after loading the view.
         
@@ -53,11 +50,13 @@ class CompanyVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
         companyList = dao.companies
         tableView.reloadData()
         
         isPlaceHolderHidden()
-
+        
+        
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -76,24 +75,14 @@ class CompanyVC: UIViewController {
     
     }
     
+    
+    
    @objc func toggleAdd() {
     let addCompanyVC = AddCompanyVC()
     self.navigationController?.pushViewController(addCompanyVC, animated: true)
     
     
-//     print("Hello WORLD!")
-    
     }
-    
-    
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == UITableViewCellEditingStyle.delete {
-//            // Delete the row from the data source
-//            companyList?.remove(at: indexPath.row)
-//
-//        } else if editingStyle == .insert {}
-//
-//    }
     
     
     override func didReceiveMemoryWarning() {
@@ -149,6 +138,7 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
             dao.deleteElementsAt(index: indexPath.row)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
             isPlaceHolderHidden()
         
         } else if editingStyle == .insert {
@@ -196,14 +186,24 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
             self.editedCompanyView = EditCompanyVC()
             self.editedCompanyView?.title = currentCompany.name
             editedCompanyView?.currentCompany = currentCompany
+            editedCompanyView?.currentCompanyIndex = indexPath.row
             self.navigationController?.pushViewController(self.editedCompanyView!, animated: true)
         } else {
-            self.productViewController = ProductVC()
-            self.productViewController?.title = currentCompany.name
-
-            self.navigationController?.pushViewController(self.productViewController!, animated: true)
+//            if currentCompany.products.isEmpty {
+//                let companyAddOn = CompanyAddOn()
+//                companyAddOn.companyList = currentCompany
+//                companyAddOn.na
+//                    .title = currentCompany.name
+//                self.navigationController?.pushViewController(self.productViewController!, animated: true)
+//
+//            } else {
+                self.productViewController = ProductVC()
+                self.productViewController?.currentCompanyIndex = indexPath.row
+                self.productViewController?.title = currentCompany.name
+                productViewController?.products = currentCompany.products
+                self.navigationController?.pushViewController(self.productViewController!, animated: true)
+//            }
             
-        
         }
         
     }

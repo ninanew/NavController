@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditCompanyVC" customModule="NavCtrl_Swift" customModuleProvider="target">
             <connections>
+                <outlet property="delButBottomConstraint" destination="APz-Gt-317" id="9Ye-iI-YaQ"/>
                 <outlet property="editCompanyText" destination="jrV-po-O5T" id="drK-Do-vHm"/>
                 <outlet property="editImageUrlText" destination="VAg-Qa-yzI" id="oAz-YJ-L25"/>
                 <outlet property="editStockTickerText" destination="Ohr-39-w0b" id="zO3-j0-QYB"/>
@@ -41,12 +42,28 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdq-wh-IPC">
+                    <rect key="frame" x="137" y="428" width="100" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="x5h-lJ-lLz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <state key="normal" title="Delete">
+                        <color key="titleColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteCompany:" destination="-1" eventType="touchUpInside" id="qcd-Z4-2vr"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Pdq-wh-IPC" secondAttribute="trailing" constant="138" id="07V-PL-L20"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jrV-po-O5T" secondAttribute="trailing" constant="60" id="6kB-dM-6oP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Pdq-wh-IPC" secondAttribute="bottom" constant="209" identifier="modConstraint" id="APz-Gt-317"/>
                 <constraint firstItem="jrV-po-O5T" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="152" id="F3o-sa-PCB"/>
                 <constraint firstItem="Ohr-39-w0b" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="62" id="Ilw-vX-YJ0"/>
+                <constraint firstItem="Pdq-wh-IPC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="137" id="TOR-j7-eO4"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VAg-Qa-yzI" secondAttribute="trailing" constant="60" id="bc0-H8-YSE"/>
                 <constraint firstItem="jrV-po-O5T" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="62" id="bo7-z2-Ibn"/>
                 <constraint firstItem="VAg-Qa-yzI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="62" id="fbi-lO-n4G"/>
@@ -55,6 +72,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ohr-39-w0b" secondAttribute="trailing" constant="60" id="saT-pN-VuQ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="66.5"/>
         </view>
     </objects>
 </document>

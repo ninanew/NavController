@@ -19,10 +19,23 @@ class DAO {
     var companies = [Company]()
     
     func deleteElementsAt(index: Int) {
-        
         companies.remove(at: index)
+        
     }
     
+    func deleteProductsAt(companyName: String, productName: String) {
+        for (indexC, company) in companies.enumerated() {
+            if company.name == companyName {
+                for (indexP, product) in companies[indexC].products.enumerated() {
+                    if product.name == productName {
+                        companies[indexC].products.remove(at: indexP)
+                    }
+                }
+            }
+        }
+    }
+
+
     func addCompany(name: String, ticker: String, imageUrl: String) {
         let company = Company(name: name, imageUrl: imageUrl, stockTicker: ticker, products: [Product]())
         companies.append(company)
@@ -39,13 +52,37 @@ class DAO {
         }
     }
     
+    func editCompany(name: String, newName: String, ticker: String, imageUrl: String) {
+        for (index, company) in companies.enumerated() {
+            if company.name == name {
+                companies[index].name = newName
+                companies[index].imageUrl = imageUrl
+                companies[index].stockTicker = ticker
+            }
+        }
+    }
+    func editProduct(companyName: String, productName: String, newProductName: String, imageUrl: String, productURL: String) {
+        for (indexC, company) in companies.enumerated() {
+            if company.name == companyName {
+                for (indexP, product) in companies[indexC].products.enumerated() {
+                    if product.name == productName {
+                        companies[indexC].products[indexP].name = newProductName
+                        companies[indexC].products[indexP].imageUrl = imageUrl
+                        companies[indexC].products[indexP].productURL = productURL
+                    }
+                }
+            }
+        }
+    }
+    
     func insert(index: Int) {
-        
-     //   companies.append()
-        
     
     }
     
+    
+        
+    
+
     func createCompany() {
         var apple = Company(name: "Apple Mobile Devices", imageUrl: "Apple Mobile Devices", stockTicker: "", products: [Product]())
         

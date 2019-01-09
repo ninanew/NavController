@@ -27,6 +27,8 @@
 		EBA4513121AF3BC600184B18 /* EditCompanyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBA4513021AF3BC600184B18 /* EditCompanyVC.xib */; };
 		EBA4513321AF3C1900184B18 /* EditProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA4513221AF3C1900184B18 /* EditProductVC.swift */; };
 		EBA4513521AF3C2C00184B18 /* EditProductVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBA4513421AF3C2C00184B18 /* EditProductVC.xib */; };
+		EBDBA56721E51CD000AF63FF /* CompanyAddOn.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDBA56621E51CD000AF63FF /* CompanyAddOn.xib */; };
+		EBDBA56921E51E5B00AF63FF /* CompanyAddOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDBA56821E51E5B00AF63FF /* CompanyAddOn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		EBA4513021AF3BC600184B18 /* EditCompanyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCompanyVC.xib; sourceTree = "<group>"; };
 		EBA4513221AF3C1900184B18 /* EditProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductVC.swift; sourceTree = "<group>"; };
 		EBA4513421AF3C2C00184B18 /* EditProductVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProductVC.xib; sourceTree = "<group>"; };
+		EBDBA56621E51CD000AF63FF /* CompanyAddOn.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyAddOn.xib; sourceTree = "<group>"; };
+		EBDBA56821E51E5B00AF63FF /* CompanyAddOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyAddOn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,8 @@
 			children = (
 				9EF237C31E5E35AA00FEFD4F /* CompanyVC.swift */,
 				9EF237C41E5E35AA00FEFD4F /* CompanyVC.xib */,
+				EBDBA56821E51E5B00AF63FF /* CompanyAddOn.swift */,
+				EBDBA56621E51CD000AF63FF /* CompanyAddOn.xib */,
 			);
 			name = CompanyViewController;
 			sourceTree = "<group>";
@@ -220,6 +226,7 @@
 				EBA45127219CA3F200184B18 /* WebView.xib in Resources */,
 				9EF237B81E5E351800FEFD4F /* Assets.xcassets in Resources */,
 				9EF237C61E5E35AA00FEFD4F /* CompanyVC.xib in Resources */,
+				EBDBA56721E51CD000AF63FF /* CompanyAddOn.xib in Resources */,
 				EBA4513521AF3C2C00184B18 /* EditProductVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +240,7 @@
 			files = (
 				EB88A3902165483E002A0869 /* DAO.swift in Sources */,
 				EB88A3A02176883C002A0869 /* AddProductVC.swift in Sources */,
+				EBDBA56921E51E5B00AF63FF /* CompanyAddOn.swift in Sources */,
 				9EF237C91E5E35C000FEFD4F /* ProductVC.swift in Sources */,
 				9EF237C51E5E35AA00FEFD4F /* CompanyVC.swift in Sources */,
 				EB1A3158213F0B500053651F /* WebView.swift in Sources */,
