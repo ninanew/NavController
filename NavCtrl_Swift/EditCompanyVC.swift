@@ -81,6 +81,7 @@ class EditCompanyVC: UIViewController, UITextFieldDelegate {
             return
             
         }
+        
         guard let imageUrl = editImageUrlText.text,
             let ticker = editStockTickerText.text
             else { return }
@@ -88,13 +89,20 @@ class EditCompanyVC: UIViewController, UITextFieldDelegate {
         DAO.share.editCompany(name: oldName, newName: companyName, ticker: ticker, imageUrl: imageUrl)
         self.navigationController?.popToRootViewController(animated: true)
         
-    }
+        return
+        
+        }
+    
+    
+    
+    
     
     @objc func toggleCancelMode() {
         self.navigationController?.popToRootViewController(animated: true)
         
         
     }
+    
 
 
 }

@@ -22,7 +22,7 @@ class AddCompanyVC : UIViewController, UITextFieldDelegate {
         
         
         let imageUrl = imageUrlText.text ?? ""
-        let company = Company(name: companyName, imageUrl: imageUrl, stockTicker: tickerText.text!, products: [Product]())
+//        let company = Company(name: companyName, imageUrl: imageUrl, stockTicker: tickerText.text!, products: [Product](), stockPrice: nil)
         
         return companyName
         

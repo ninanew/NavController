@@ -20,11 +20,17 @@ class CompanyVC: UIViewController {
     var companyList : [Company]?
     var productViewController : ProductVC?
     var editedCompanyView : EditCompanyVC?
+    
+    var timer = Timer()
 
+    var networkPrice: Network!
     
     let dao = DAO.share
     
     override func viewDidLoad() {
+        
+        
+        //letPrice(symbol: "AAPL")
         
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = editButtonItem
@@ -45,6 +51,19 @@ class CompanyVC: UIViewController {
         
         dao.createCompany()
         
+        networkPrice = Network()
+    
+        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { (_) in
+            self.start()
+            
+            
+        })
+        
+    }
+    
+   func start() {
+        networkPrice.start()
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,17 +86,17 @@ class CompanyVC: UIViewController {
     
     
     func isPlaceHolderHidden() {
-        if companyList?.count == nil || companyList?.count == 0 {
+        if companyList?.count == nil || companyList?.count == 0
+        {
             placeHolder.isHidden = false
         } else {
             placeHolder.isHidden = true
         }
-    
+
     }
     
-    
-    
    @objc func toggleAdd() {
+   
     let addCompanyVC = AddCompanyVC()
     self.navigationController?.pushViewController(addCompanyVC, animated: true)
     
@@ -169,6 +188,7 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
         
         if let currentCompany = self.companyList?[indexPath.row] {
             cell.textLabel?.text = currentCompany.name
+            cell.detailTextLabel?.text = currentCompany.stockPrice?.price
             cell.imageView?.image = UIImage(named: currentCompany.imageUrl)
 
         } else {

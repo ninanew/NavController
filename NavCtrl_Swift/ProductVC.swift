@@ -43,15 +43,13 @@ class ProductVC: UIViewController {
             nib.frame = view.bounds
             nib.companyList = currentCompany
             nib.mainSet()
+            nib.addProductPressed.addTarget(self, action: #selector(toggleAdd), for: .touchUpInside)
             view.addSubview(nib)
             
         } else  {
             tableView.reloadData()
         }
     }
-    
-    
-    
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)

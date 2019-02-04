@@ -14,5 +14,6 @@ struct Company {
     var imageUrl: String
     var stockTicker: String
     var products: [Product]
+    var stockPrice: Stock?
     
 }

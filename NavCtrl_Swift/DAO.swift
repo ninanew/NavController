@@ -37,7 +37,7 @@ class DAO {
 
 
     func addCompany(name: String, ticker: String, imageUrl: String) {
-        let company = Company(name: name, imageUrl: imageUrl, stockTicker: ticker, products: [Product]())
+        let company = Company(name: name, imageUrl: imageUrl, stockTicker: ticker, products: [Product](), stockPrice: nil)
         companies.append(company)
     }
     
@@ -84,27 +84,27 @@ class DAO {
     
 
     func createCompany() {
-        var apple = Company(name: "Apple Mobile Devices", imageUrl: "Apple Mobile Devices", stockTicker: "", products: [Product]())
+        var apple = Company(name: "Apple Mobile Devices", imageUrl: "Apple Mobile Devices", stockTicker: "AAPL", products: [Product](), stockPrice: nil)
         
         let appleIPhone = Product(name: "Apple iPhone", imageUrl: "Apple iPhone", productURL: "https://www.apple.com/iphone/")
         let appleIPadPro = Product(name: "Apple iPad Pro", imageUrl: "Apple iPad Pro", productURL: "https://www.apple.com/ipad-pro/")
         let appleIPadTouch = Product(name: "Apple iPod Touch", imageUrl: "Apple iPod Touch", productURL: "https://www.apple.com/ipod-touch/")
         
         
-        var samsung = Company(name: "Samsung Mobile Devices", imageUrl: "Samsung Mobile Devices", stockTicker: "", products: [Product]())
+        var samsung = Company(name: "Samsung Mobile Devices", imageUrl: "Samsung Mobile Devices", stockTicker: "SSNLF", products: [Product](), stockPrice: nil)
         
         let samsungGalaxyS = Product(name: "Samsung Galaxy S9", imageUrl: "Samsung Galaxy S9", productURL: "https://www.samsung.com/global/galaxy/galaxy-s9/")
         let samsungGalaxyTab = Product(name: "Samsung Galaxy Tab", imageUrl: "Samsung Galaxy Tab", productURL: "https://www.samsung.com/us/explore/tab-s4/?sem-mktg-pfs-tab-80118-22217")
         let samsungGalaxyNote = Product(name: "Samsung Galaxy Note", imageUrl: "Samsung Galaxy Note", productURL:"https://www.samsung.com/us/mobile/galaxy-note9/")
         
-        var amazon = Company(name: "Amazon Mobile Devices", imageUrl: "Amazon Mobile Devices", stockTicker: "", products: [Product]())
+        var amazon = Company(name: "Amazon Mobile Devices", imageUrl: "Amazon Mobile Devices", stockTicker: "AMZN", products: [Product](), stockPrice: nil)
         
         let amazonEcho = Product(name: "Amazon Echo", imageUrl: "Amazon Echo", productURL:"https://www.amazon.com/dp/B07456BG8N?tag=googhydr-20&hvadid=%7Bcreative%7D&hvpos=%7Badposition%7D&hvnetw=%7Bnetwork%7D&hvrand=%7Brandom%7D&hvpone=%7Bparam1%7D&hvptwo=%7Bparam2%7D&hvqmt=%7Bmatchtype%7D&hvdev=%7Bdevice%7D&hvdvcmdl=%7Bdevicemodel%7D&hvlocint=%7Bloc_interest_ms%7D&hvlocphy=%7Bloc_physical_ms%7D&hvtargid=%7Btargetid%7D&ref=pd_sl_3g07419rwu_e")
         let amazonFireHD = Product(name: "Amazon Fire HD", imageUrl: "Amazon Fire HD", productURL:"https://www.amazon.com/dp/B01J6RPGKG")
         let amazonEchoDot = Product(name: "Amazon Echo Dot", imageUrl: "Amazon Echo Dot", productURL:"https://www.amazon.com/gp/product/B01DFKC2SO?ref=ODS_HA_B_surl&tag=googhydr-20&hvadid=243971412886&hvpos=1t1&hvnetw=g&hvrand=11251785959057900677&hvpone=&hvptwo=&hvqmt=b&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9067609&hvtargid=kwd-330765436234&ref=pd_sl_5dhcl9gqwz_e")
         
         
-        var microsoft = Company(name: "Microsoft Mobile Devices", imageUrl: "Microsoft Mobile Devices", stockTicker: "", products: [Product]())
+        var microsoft = Company(name: "Microsoft Mobile Devices", imageUrl: "Microsoft Mobile Devices", stockTicker: "MSFT", products: [Product](), stockPrice: nil)
         
         let microsoftNokiaLumia = Product(name: "Microsoft Nokia Lumia", imageUrl: "Microsoft Nokia Lumia", productURL:"https://www.microsoft.com/en-ww/mobile/phones/lumia")
         let windowsPhone = Product(name: "Windows Phone 8", imageUrl: "Windows Phone 8", productURL:"https://www.microsoft.com/en-us/store/b/mobile")

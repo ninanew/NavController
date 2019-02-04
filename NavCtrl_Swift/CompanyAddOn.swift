@@ -21,6 +21,18 @@ class CompanyAddOn: UIView {
     var companyList: Company?
     let dao = DAO.share
     
+    override func awakeFromNib() {
+        
+//        addProductPressed.addTarget(self,  action: #selector(toggleAdd), for: .touchUpInside)
+        
+    }
+        
+//    @objc func toggleAdd(vc: UIViewController) {
+//
+//        let addProductVC = AddProductVC()
+//        vc.navigationController?.pushViewController(addProductVC, animated: true)
+//    }
+
 //    func imageView(_ imageView: UIImageView, indexPath: IndexPath) {
     func mainSet(){
         if let currentCompany = companyList {
@@ -37,12 +49,13 @@ class CompanyAddOn: UIView {
                 } else {
                     brandImage.image = UIImage(named: currentCompany.imageUrl)
                 }
+            
             }
             
         }
         
     }
-    
+
 }
 
 

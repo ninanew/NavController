@@ -29,6 +29,9 @@
 		EBA4513521AF3C2C00184B18 /* EditProductVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBA4513421AF3C2C00184B18 /* EditProductVC.xib */; };
 		EBDBA56721E51CD000AF63FF /* CompanyAddOn.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDBA56621E51CD000AF63FF /* CompanyAddOn.xib */; };
 		EBDBA56921E51E5B00AF63FF /* CompanyAddOn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDBA56821E51E5B00AF63FF /* CompanyAddOn.swift */; };
+		EBDBA56B21EFAD4E00AF63FF /* Stocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDBA56A21EFAD4E00AF63FF /* Stocks.swift */; };
+		EBDBA56D21F78ACC00AF63FF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDBA56C21F78ACB00AF63FF /* Network.swift */; };
+		EBDBA56F21FFB9F400AF63FF /* Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDBA56E21FFB9F400AF63FF /* Delegation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,9 @@
 		EBA4513421AF3C2C00184B18 /* EditProductVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProductVC.xib; sourceTree = "<group>"; };
 		EBDBA56621E51CD000AF63FF /* CompanyAddOn.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyAddOn.xib; sourceTree = "<group>"; };
 		EBDBA56821E51E5B00AF63FF /* CompanyAddOn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyAddOn.swift; sourceTree = "<group>"; };
+		EBDBA56A21EFAD4E00AF63FF /* Stocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stocks.swift; sourceTree = "<group>"; };
+		EBDBA56C21F78ACB00AF63FF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		EBDBA56E21FFB9F400AF63FF /* Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,9 @@
 			children = (
 				EB1A316121628A490053651F /* Models */,
 				9EF237B01E5E351800FEFD4F /* AppDelegate.swift */,
+				EBDBA56A21EFAD4E00AF63FF /* Stocks.swift */,
+				EBDBA56C21F78ACB00AF63FF /* Network.swift */,
+				EBDBA56E21FFB9F400AF63FF /* Delegation.swift */,
 				EB1A3157213F0B500053651F /* WebView.swift */,
 				EBA45126219CA3F200184B18 /* WebView.xib */,
 				9EF237CC1E5E35DB00FEFD4F /* CompanyViewController */,
@@ -240,6 +249,7 @@
 			files = (
 				EB88A3902165483E002A0869 /* DAO.swift in Sources */,
 				EB88A3A02176883C002A0869 /* AddProductVC.swift in Sources */,
+				EBDBA56F21FFB9F400AF63FF /* Delegation.swift in Sources */,
 				EBDBA56921E51E5B00AF63FF /* CompanyAddOn.swift in Sources */,
 				9EF237C91E5E35C000FEFD4F /* ProductVC.swift in Sources */,
 				9EF237C51E5E35AA00FEFD4F /* CompanyVC.swift in Sources */,
@@ -249,6 +259,8 @@
 				EBA4513321AF3C1900184B18 /* EditProductVC.swift in Sources */,
 				EB1A316321628A7D0053651F /* Company.swift in Sources */,
 				EB1A316521628B300053651F /* Product.swift in Sources */,
+				EBDBA56B21EFAD4E00AF63FF /* Stocks.swift in Sources */,
+				EBDBA56D21F78ACC00AF63FF /* Network.swift in Sources */,
 				EB88A3A6217E7852002A0869 /* AddCompanyVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,7 +287,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -333,7 +345,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
