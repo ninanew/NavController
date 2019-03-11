@@ -51,9 +51,12 @@ class CompanyVC: UIViewController {
         
         dao.createCompany()
         
+//        networkPrice = Network(companyVC: self)
         networkPrice = Network()
+        networkPrice.delegate = self
     
-        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { (_) in
+        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { (_) in
+            
             self.start()
             
             
@@ -188,6 +191,7 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
         
         if let currentCompany = self.companyList?[indexPath.row] {
             cell.textLabel?.text = currentCompany.name
+            print("here i show the price of \(currentCompany.name)")
             cell.detailTextLabel?.text = currentCompany.stockPrice?.price
             cell.imageView?.image = UIImage(named: currentCompany.imageUrl)
 
@@ -228,8 +232,23 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+//    func updateTableView() {
+//        self.companyList = DAO.share.companies
+//        //Main Thread Checker: UI API called on a background thread:
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//    }
+    
 }
 
+
+extension CompanyVC: StockDelegate {
+    func updated() {
+        companyList = dao.companies
+        tableView.reloadData()
+    }
+}
 
 
 

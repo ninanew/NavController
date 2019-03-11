@@ -10,20 +10,24 @@ import Foundation
 
 class Network {
     
+    //    var companyVC : CompanyVC
+    var delegate: StockDelegate?
     
+    //    init(companyVC : CompanyVC) {
+    //        self.companyVC = companyVC
     init() {
         start()
     }
     
-    @objc func start() {
+    func start() {
         let symbols = DAO.share.companies.map { $0.stockTicker.uppercased() }
         
         for symbol in symbols {
             if symbol != "" {
-            letPrice(symbol: symbol)
+                letPrice(symbol: symbol)
+            }
         }
     }
-}
     
     func letPrice(symbol: String) {
         let baseUrl = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=\(symbol)&apikey=9TGRNY2XC629OP3Q"
@@ -44,7 +48,7 @@ class Network {
                 return
             }
             do {
-            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                 guard let jsonObject = json?["Global Quote"] as? [String: Any] else {
                     return
                 }
@@ -52,8 +56,12 @@ class Network {
                 
                 for (index, company) in DAO.share.companies.enumerated() {
                     if stock.symbol == company.stockTicker {
+                        print("here i get the price of \(DAO.share.companies[index].name)")
                         DAO.share.companies[index].stockPrice = stock
                     }
+                }
+                DispatchQueue.main.async {
+                    self.delegate?.updated()
                 }
                 print("\(stock.symbol) = \(stock.price)")
             }
@@ -61,8 +69,8 @@ class Network {
                 print("Failed \(serilizationError.localizedDescription)")
             }
             
-        } .resume()
-    
+            } .resume()
+        
     }
     
 }

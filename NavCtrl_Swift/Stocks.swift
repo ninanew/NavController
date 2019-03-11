@@ -9,9 +9,13 @@
 import Foundation
 
 
-struct Stock {
-    let symbol:String
-    let price:String
+class Stock {
+    
+  //  var companyAddOn : CompanyAddOn
+//    var delegate: StockDelegate?
+    
+    let symbol: String
+    let price: String
     
     enum SerializationError:Error {
         case missing (String)
@@ -26,6 +30,8 @@ struct Stock {
             self.price = price
         
         }
+    
+    
     
    // static let basePath = "https://www.alphavantage.co/queryfunction=TIME_SERIES_DAILY&symbol=MSFT&apikey=9TGRNY2XC629OP3Q"
     
