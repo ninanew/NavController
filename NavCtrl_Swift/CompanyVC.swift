@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CompanyVC: UIViewController {
     
@@ -15,11 +16,16 @@ class CompanyVC: UIViewController {
     @IBOutlet weak var placeHolderImage: UIImageView!
     @IBOutlet weak var addCompanyButton: UIButton!
     
+    var onCompanyTapped: ((Company) -> Void)?
     
     
     var companyList : [Company]?
+    
+    
     var productViewController : ProductVC?
     var editedCompanyView : EditCompanyVC?
+    var tableData : [NSManagedObject]?
+  //  let productViewManaged = ProductVC.share
     
     var timer = Timer()
 
@@ -49,7 +55,7 @@ class CompanyVC: UIViewController {
     
         // Do any additional setup after loading the view.
         
-        dao.createCompany()
+       // dao.createCompany()
         
 //        networkPrice = Network(companyVC: self)
         networkPrice = Network()
@@ -72,8 +78,12 @@ class CompanyVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tableData = DAO.share.companiesObject
+        
+        
         
         companyList = dao.companies
+        
         tableView.reloadData()
         
         isPlaceHolderHidden()
@@ -89,7 +99,13 @@ class CompanyVC: UIViewController {
     
     
     func isPlaceHolderHidden() {
-        if companyList?.count == nil || companyList?.count == 0
+//        if companyList?.count == nil || companyList?.count == 0
+//        {
+//            placeHolder.isHidden = false
+//        } else {
+//            placeHolder.isHidden = true
+//        }
+        if dao.companiesObject.count == 0
         {
             placeHolder.isHidden = false
         } else {
@@ -129,12 +145,18 @@ class CompanyVC: UIViewController {
 }
 
 extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        <#code#>
+//    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        /*
         if let companyCount = self.companyList?.count {
             return companyCount
 
@@ -142,7 +164,9 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
             print("unknown number of rows... companyList is nil!")
             return 0
         }
+         */
 
+        return dao.companiesObject.count
     }
     
     // Override to support conditional editing of the table view.
@@ -152,16 +176,25 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     // Override to support editing the table view.
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    private func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            companyList?.remove(at: indexPath.row)
+         /*   companyList?.remove(at: indexPath.row)
             
             dao.deleteElementsAt(index: indexPath.row)
             
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .fade) */
             
-            isPlaceHolderHidden()
+            DAO.share.deleteCompanyFromCoreData(index: indexPath.row)
+            self.tableData = DAO.share.companiesObject
+            self.tableView.reloadData()
+            self.isPlaceHolderHidden()
+            
+            
+            
+        //   isPlaceHolderHidden()
+            
+            
         
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -173,22 +206,33 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    
+ //   func undoDeleteCompany(tableView: UITableView) {
+        
+   //     let oldCompany = self.companyList.
+        
+ //   }
+    
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedCompany = self.companyList![sourceIndexPath.row]
         companyList!.remove(at: sourceIndexPath.row)
         companyList!.insert(movedCompany, at: destinationIndexPath.row)
+    
+        
     }
     
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
+    
+//    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+//        // Return NO if you do not want the item to be re-orderable.
+//        return true
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let CellIdentifier = "Cell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier) ?? UITableViewCell(style: .subtitle, reuseIdentifier: CellIdentifier)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier) as? CompanyTableViewCell else { return UITableViewCell(frame: .zero) }
         
         
+        /*
         if let currentCompany = self.companyList?[indexPath.row] {
             cell.textLabel?.text = currentCompany.name
             print("here i show the price of \(currentCompany.name)")
@@ -198,12 +242,52 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.textLabel?.text = "?"
         }
-       
+        */
+        
+           cell.onTap = { [weak self] in
+            self?.onCompanyTapped?(<#Company#>)
+        }
+        
+       let currentCompany = dao.companiesObject[indexPath.row]
+        
+        
+        
+        cell.textLabel?.text = currentCompany.value(forKey: "name") as? String
+        cell.imageView?.image =  UIImage(named: currentCompany.imageUrl!)
+        
+        cell.detailTextLabel?.text = currentCompany.value(forKey: "stockPrice") as? String
+        
+        //
+        
         return cell
        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let currentCompany = dao.companiesObject[indexPath.row]
+
+       // currentCompany.products?.allObjects
+//        productViewController?.title = productViewManaged.value(forKey: "name") as? String
+//        productViewController?.image = productViewManaged.value(forKey: "imageUrl") as? String
+//        productViewController?.image = productViewManaged.value(forKey: "productURL") as? String
+        
+        
+        
+        dao.selectedCoreCompany = currentCompany
+        
+        let productVC = ProductVC()
+        
+        productVC.title = currentCompany.name
+        productVC.productsManaged = currentCompany.products?.allObjects as? [CoreProduct]
+        
+        self.navigationController?.pushViewController(productVC, animated: true)
+        
+        
+        
+    }
+        
+        /*
         
         guard let currentCompany = companyList?[indexPath.row] else { return }
         if isEditing {
@@ -229,8 +313,9 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
 //            }
             
         }
+ */
         
-    }
+    
     
 //    func updateTableView() {
 //        self.companyList = DAO.share.companies
@@ -245,7 +330,7 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
 
 extension CompanyVC: StockDelegate {
     func updated() {
-        companyList = dao.companies
+        //companyList = dao.companies
         tableView.reloadData()
     }
 }

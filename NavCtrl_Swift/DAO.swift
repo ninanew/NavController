@@ -7,16 +7,30 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 class DAO {
     
     static let share = DAO()
     
+    var selectedCoreCompany : CoreCompany?
     
-    private init() {}
     
+    private init() {
+        
+        readCompanies()
+        
+      //  let company = companiesObject[0]
+        
+  
 
+       //  saveProductToCoreData(for: company, name: "Sample 2", imageUrl: "Apple iPhone", productURL: "https://davedelong.com/blog/2018/05/09/the-laws-of-core-data/")
+        
+    }
+    
     var companies = [Company]()
+    var companiesObject = [CoreCompany]()
     
     func deleteElementsAt(index: Int) {
         companies.remove(at: index)
@@ -79,12 +93,111 @@ class DAO {
     
     }
     
-    
+    func readCompanies() {
         
+            // Retrieve all data from Core Data
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+            }
+        
+            let managedContext = appDelegate.persistentContainer.viewContext
+        
+            let fetchRequest = NSFetchRequest<CoreCompany>(entityName: "CoreCompany")
+            do {
+                companiesObject = try managedContext.fetch(fetchRequest)
+                
+            } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            }
+    
+}
+
+    func saveProductToCoreData(name: String, imageUrl: String, productURL: String) {
+      
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return
+            
+        }
+      
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let productsManaged = CoreProduct(context: managedContext)
+        
+        productsManaged.name = name
+        
+        productsManaged.imageUrl = imageUrl
+        
+        productsManaged.productURL = productURL
+        
+        selectedCoreCompany!.addToProducts(productsManaged)
+        
+        do {
+  
+            try managedContext.save()
+            
+            
+            
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        
+        }
+    
+    }
+        
+    func saveCompanyToCoreData(name: String, imageUrl: String, stockTicker: String, stockPrice: Stock?) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return
+            
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let company = CoreCompany(context: managedContext)
+        
+        
+        company.name = name
+        company.imageUrl = imageUrl
+        
+        company.setValue(stockTicker, forKeyPath: "stockTicker")
+        company.setValue(stockPrice, forKeyPath: "stockPrice")
+        
+        
+        
+        do {
+            try managedContext.save()
+            companiesObject.append(company )
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    
+    func deleteCompanyFromCoreData(index:Int) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let companyToDelete = self.companiesObject[index]
+        
+        managedContext.delete(companyToDelete)
+        do {
+            try managedContext.save()
+            companiesObject.remove(at: index)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+        
+    }
+    
     
 
     func createCompany() {
         var apple = Company(name: "Apple Mobile Devices", imageUrl: "Apple Mobile Devices", stockTicker: "AAPL", products: [Product](), stockPrice: nil)
+        
+        
         
         let appleIPhone = Product(name: "Apple iPhone", imageUrl: "Apple iPhone", productURL: "https://www.apple.com/iphone/")
         let appleIPadPro = Product(name: "Apple iPad Pro", imageUrl: "Apple iPad Pro", productURL: "https://www.apple.com/ipad-pro/")
@@ -126,6 +239,8 @@ class DAO {
         microsoft.products.append(microsoftNokiaLumia)
         microsoft.products.append(windowsPhone)
         microsoft.products.append(windowsSurface)
+        
+        
         
         companies.append(apple)
         companies.append(samsung)

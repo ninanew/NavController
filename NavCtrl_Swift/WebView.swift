@@ -15,7 +15,8 @@ class WebView: UIViewController, WKNavigationDelegate {
     var webView = WKWebView()
     
     var companyName: String?
-    var currentProduct: Product?
+    var currentCoreProduct: CoreProduct?
+    var currentProduct : Product?
     
     init(with stringUrl: String) {
         super.init(nibName: "WebView", bundle: nil)

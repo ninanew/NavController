@@ -16,6 +16,9 @@ class EditProductVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var delButBottomConstraint: NSLayoutConstraint!
     
+    
+ //   var productsManaged : [CoreCompany]?
+    
     @IBAction func deleteProduct(_ sender: Any) {
         
         guard let companyName = companyName, let productOldName = title else { return }
@@ -30,7 +33,7 @@ class EditProductVC: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShow(notification:NSNotification){
         var userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
     
@@ -53,8 +56,8 @@ class EditProductVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+ //       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIResponder.keyboardDidShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIResponder.keyboardWillHideNotification, object: nil)
         
         let cancelBarButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(toggleCancel))
         self.navigationItem.leftBarButtonItem = cancelBarButton
@@ -66,7 +69,8 @@ class EditProductVC: UIViewController, UITextFieldDelegate {
         
         guard let currentProduct = currentProduct else {
             print("ERROR: No DATA about product!")
-            return }
+            return
+        }
         
         title = currentProduct.name
         

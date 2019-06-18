@@ -14,27 +14,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var navigationController: UINavigationController?
+    
     //mind your spacing - keep it consistent
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        //do you understand all this? if not, let's discuss, it's pretty important. I have had to do this to every single app I've ever written
-        
         let rootController = CompanyVC()
         
         navigationController = UINavigationController(rootViewController: rootController)
         navigationController?.navigationBar.barTintColor = UIColor(red:0.39, green:0.78, blue:0.39, alpha:1.0)
         navigationController?.navigationBar.tintColor = .white
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         //don't use self. unless it's within a closure
-        
+
         return true
     }
+
+//    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        // Override point for customization after application launch.
+    
+        //do you understand all this? if not, let's discuss, it's pretty important. I have had to do this to every single app I've ever written
+        
+//        let rootController = CompanyVC()
+//
+//        navigationController = UINavigationController(rootViewController: rootController)
+//        navigationController?.navigationBar.barTintColor = UIColor(red:0.39, green:0.78, blue:0.39, alpha:1.0)
+//        navigationController?.navigationBar.tintColor = .white
+//        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        navigationController?.navigationBar.titleTextAttributes = textAttributes
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.rootViewController = navigationController
+//        window?.makeKeyAndVisible()
+//        //don't use self. unless it's within a closure
+//
+  //     return true
+   // }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -59,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-}
+    
 
 var persistentContainer: NSPersistentContainer = {
     /*
@@ -68,7 +86,7 @@ var persistentContainer: NSPersistentContainer = {
      application to it. This property is optional since there are legitimate
      error conditions that could cause the creation of the store to fail.
      */
-    let container = NSPersistentContainer(name: "core_data_sample")
+    let container = NSPersistentContainer(name: "CoreDataModel")
     container.loadPersistentStores(completionHandler: { (storeDescription, error) in
         if let error = error as NSError? {
             // Replace this implementation with code to handle the error appropriately.
@@ -105,4 +123,4 @@ func saveContext () {
 }
 
 
-
+}

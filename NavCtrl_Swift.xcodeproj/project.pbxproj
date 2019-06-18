@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05158856A32FC32F99A496AF /* Pods_NavCtrl_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845548BC78BD8B8784296FF6 /* Pods_NavCtrl_Swift.framework */; };
 		9EF237B11E5E351800FEFD4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF237B01E5E351800FEFD4F /* AppDelegate.swift */; };
 		9EF237B81E5E351800FEFD4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EF237B71E5E351800FEFD4F /* Assets.xcassets */; };
 		9EF237BB1E5E351800FEFD4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF237B91E5E351800FEFD4F /* LaunchScreen.storyboard */; };
@@ -33,9 +34,12 @@
 		EBDBA56B21EFAD4E00AF63FF /* Stocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDBA56A21EFAD4E00AF63FF /* Stocks.swift */; };
 		EBDBA56D21F78ACC00AF63FF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDBA56C21F78ACB00AF63FF /* Network.swift */; };
 		EBDBA595220B5D7600AF63FF /* StockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDBA594220B5D7600AF63FF /* StockDelegate.swift */; };
+		EBE7C75722B6A384002E2606 /* CompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE7C75622B6A384002E2606 /* CompanyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D8F7A0EEADB46D2266C0CA8 /* Pods-NavCtrl_Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavCtrl_Swift.release.xcconfig"; path = "Target Support Files/Pods-NavCtrl_Swift/Pods-NavCtrl_Swift.release.xcconfig"; sourceTree = "<group>"; };
+		845548BC78BD8B8784296FF6 /* Pods_NavCtrl_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NavCtrl_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF237AD1E5E351800FEFD4F /* NavCtrl_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavCtrl_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF237B01E5E351800FEFD4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EF237B71E5E351800FEFD4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,6 +49,7 @@
 		9EF237C41E5E35AA00FEFD4F /* CompanyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyVC.xib; sourceTree = "<group>"; };
 		9EF237C71E5E35C000FEFD4F /* ProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
 		9EF237C81E5E35C000FEFD4F /* ProductVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductVC.xib; sourceTree = "<group>"; };
+		D18E7F13E3ED86036756C49D /* Pods-NavCtrl_Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavCtrl_Swift.debug.xcconfig"; path = "Target Support Files/Pods-NavCtrl_Swift/Pods-NavCtrl_Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		EB0D066B223056C1008B16DA /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		EB1A3157213F0B500053651F /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		EB1A315D213F18880053651F /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
@@ -65,6 +70,7 @@
 		EBDBA56A21EFAD4E00AF63FF /* Stocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stocks.swift; sourceTree = "<group>"; };
 		EBDBA56C21F78ACB00AF63FF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		EBDBA594220B5D7600AF63FF /* StockDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDelegate.swift; sourceTree = "<group>"; };
+		EBE7C75622B6A384002E2606 /* CompanyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,18 +78,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05158856A32FC32F99A496AF /* Pods_NavCtrl_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A21659E9D48AE1345A10E25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				845548BC78BD8B8784296FF6 /* Pods_NavCtrl_Swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9EF237A41E5E351800FEFD4F = {
 			isa = PBXGroup;
 			children = (
 				9EF237AF1E5E351800FEFD4F /* NavCtrl_Swift */,
 				9EF237AE1E5E351800FEFD4F /* Products */,
 				EBA451252192320C00184B18 /* Recovered References */,
+				FE6C5D9010FDF0A8E59678BC /* Pods */,
+				4A21659E9D48AE1345A10E25 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +165,7 @@
 				9EF237C41E5E35AA00FEFD4F /* CompanyVC.xib */,
 				EBDBA56821E51E5B00AF63FF /* CompanyAddOn.swift */,
 				EBDBA56621E51CD000AF63FF /* CompanyAddOn.xib */,
+				EBE7C75622B6A384002E2606 /* CompanyTableViewCell.swift */,
 			);
 			name = CompanyViewController;
 			sourceTree = "<group>";
@@ -169,6 +187,15 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		FE6C5D9010FDF0A8E59678BC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D18E7F13E3ED86036756C49D /* Pods-NavCtrl_Swift.debug.xcconfig */,
+				2D8F7A0EEADB46D2266C0CA8 /* Pods-NavCtrl_Swift.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,9 +203,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9EF237BF1E5E351800FEFD4F /* Build configuration list for PBXNativeTarget "NavCtrl_Swift" */;
 			buildPhases = (
+				F88859AD978B052EF83745FF /* [CP] Check Pods Manifest.lock */,
 				9EF237A91E5E351800FEFD4F /* Sources */,
 				9EF237AA1E5E351800FEFD4F /* Frameworks */,
 				9EF237AB1E5E351800FEFD4F /* Resources */,
+				1DDA9FA4FC7BAEDC5162DDA2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +225,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = turntotech;
 				TargetAttributes = {
 					9EF237AC1E5E351800FEFD4F = {
@@ -245,6 +274,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1DDA9FA4FC7BAEDC5162DDA2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NavCtrl_Swift/Pods-NavCtrl_Swift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NavCtrl_Swift/Pods-NavCtrl_Swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F88859AD978B052EF83745FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NavCtrl_Swift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9EF237A91E5E351800FEFD4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -263,6 +335,7 @@
 				EBA4513321AF3C1900184B18 /* EditProductVC.swift in Sources */,
 				EB1A316321628A7D0053651F /* Company.swift in Sources */,
 				EB1A316521628B300053651F /* Product.swift in Sources */,
+				EBE7C75722B6A384002E2606 /* CompanyTableViewCell.swift in Sources */,
 				EBDBA56B21EFAD4E00AF63FF /* Stocks.swift in Sources */,
 				EBDBA56D21F78ACC00AF63FF /* Network.swift in Sources */,
 				EB88A3A6217E7852002A0869 /* AddCompanyVC.swift in Sources */,
@@ -394,29 +467,33 @@
 		};
 		9EF237C01E5E351800FEFD4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D18E7F13E3ED86036756C49D /* Pods-NavCtrl_Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEVELOPMENT_TEAM = R99C9JK33N;
 				INFOPLIST_FILE = NavCtrl_Swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com..NavCtrl-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
 		9EF237C11E5E351800FEFD4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D8F7A0EEADB46D2266C0CA8 /* Pods-NavCtrl_Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEVELOPMENT_TEAM = R99C9JK33N;
 				INFOPLIST_FILE = NavCtrl_Swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com..NavCtrl-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

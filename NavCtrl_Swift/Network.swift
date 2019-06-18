@@ -20,7 +20,10 @@ class Network {
     }
     
     func start() {
-        let symbols = DAO.share.companies.map { $0.stockTicker.uppercased() }
+        
+       
+        
+        let symbols = DAO.share.companiesObject.map { $0.stockTicker!.uppercased() }
         
         for symbol in symbols {
             if symbol != "" {
@@ -54,14 +57,14 @@ class Network {
                 }
                 let stock = try Stock(json: jsonObject)
                 
-                for (index, company) in DAO.share.companies.enumerated() {
+                for (index, company) in DAO.share.companiesObject.enumerated() {
                     if stock.symbol == company.stockTicker {
-                        print("here i get the price of \(DAO.share.companies[index].name)")
-                        DAO.share.companies[index].stockPrice = stock
+                      //  print("here i get the price of \(DAO.share.companies[index].name)")
+                        DAO.share.companiesObject[index].stockPrice = stock.price
                     }
                 }
                 DispatchQueue.main.async {
-                    self.delegate?.updated()
+                  self.delegate?.updated()
                 }
                 print("\(stock.symbol) = \(stock.price)")
             }

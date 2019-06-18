@@ -10,9 +10,11 @@ import UIKit
 
 class AddProductVC : UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var productNameText: UITextField!
-    @IBOutlet weak var imageUrlText: UITextField!
-    @IBOutlet weak var tickerText: UITextField!
+    @IBOutlet var productNameText: UITextField!
+    @IBOutlet var imageUrlText: UITextField!
+    @IBOutlet var productURLText: UITextField!
+    
+    
     
     var companyName: String?
     
@@ -47,12 +49,13 @@ class AddProductVC : UIViewController, UITextFieldDelegate {
             return
         }
         guard let imageUrl = imageUrlText.text,
-            let ticker = tickerText.text,
-            let companyName = companyName
+            let productURL = productURLText.text
+         //   let companyName = companyName
             else { return }
         
-        DAO.share.addProduct(for: companyName, name: productName, imageUrl: imageUrl, productURL: "")
-
+         DAO.share.saveProductToCoreData(name: productName, imageUrl: imageUrl, productURL: productURL)
+        
+     
         self.navigationController?.popViewController(animated: true)
         
         //        self.navigationController?.popToRootViewController(animated: true)

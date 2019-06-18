@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class EditCompanyVC: UIViewController, UITextFieldDelegate {
     
@@ -19,12 +20,11 @@ class EditCompanyVC: UIViewController, UITextFieldDelegate {
         
         DAO.share.deleteElementsAt(index: currentCompanyIndex!)
         navigationController?.popViewController(animated: true)
-    
     }
     
     @objc func keyboardWillShow(notification:NSNotification){
         var userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
         
@@ -50,8 +50,8 @@ class EditCompanyVC: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIResponder.keyboardDidShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIResponder.keyboardWillHideNotification, object: nil)
         
         
         guard let currentCompany = currentCompany else { return }
@@ -67,6 +67,17 @@ class EditCompanyVC: UIViewController, UITextFieldDelegate {
         
         self.navigationController?.navigationBar.backgroundColor = .green
         self.navigationController?.navigationBar.tintColor = .white
+        
+        view.addSubview(editCompanyText)
+        editCompanyText.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().inset(20)
+            make.edges.equalToSuperview()
+            make.center.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
         
         
     }

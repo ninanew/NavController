@@ -50,7 +50,8 @@ class AddCompanyVC : UIViewController, UITextFieldDelegate {
             let ticker = tickerText.text
             else { return }
         
-        DAO.share.addCompany(name: companyName, ticker: ticker, imageUrl: imageUrl)
+        //DAO.share.addCompany(name: companyName, ticker: ticker, imageUrl: imageUrl)
+        DAO.share.saveCompanyToCoreData(name: companyName, imageUrl: imageUrl, stockTicker: ticker, stockPrice: nil)
         self.navigationController?.popToRootViewController(animated: true)
 
     }

@@ -16,6 +16,7 @@ class CompanyAddOn: UIView {
     @IBOutlet weak var addProductPressed: UIButton!
     @IBOutlet weak var productAddition: UILabel!
     @IBOutlet weak var brandImage: UIImageView!
+ 
     
     
     var companyList: Company?

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 //don't forget - if you aren't going to be deriving subclasses from a class, mark it final
 
@@ -14,14 +15,23 @@ class ProductVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
+
     var currentCompanyIndex: Int?
     
-    var products: [Product]?
+//    static let share = CoreProduct()
+    var productsManaged : [CoreProduct]!
+ 
+    
+    
+  //  var products: [Product]?
+    
+    
     var productView: ProductVC?
     var editedProductView : EditProductVC?
     
     let dao = DAO.share
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,13 +39,14 @@ class ProductVC: UIViewController {
         self.navigationItem.rightBarButtonItem = addBarButton
     }
     
+    /*
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         let companyList = dao.companies
         guard let currentCompanyIndex = currentCompanyIndex else { return }
         let currentCompany = companyList[currentCompanyIndex]
-        products = currentCompany.products
+        //products = currentCompany.products
         
         if products!.isEmpty {
             let nib = Bundle.main.loadNibNamed("CompanyAddOn", owner: self, options: nil)?.first as! CompanyAddOn
@@ -50,6 +61,7 @@ class ProductVC: UIViewController {
             tableView.reloadData()
         }
     }
+ */
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
@@ -94,7 +106,8 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //no need for an if/else here, we can just use nil-coalescing
-        return products?.count ?? 0
+       // return products?.count ?? 0
+        return productsManaged?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,9 +115,10 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier) ?? UITableViewCell(style: .subtitle, reuseIdentifier: CellIdentifier)
         
         //configure the cell
-        if let product = products?[indexPath.row] {
+        if let product = productsManaged?[indexPath.row] {
             cell.textLabel?.text = product.name
-            cell.imageView?.image = UIImage(named: product.name)
+            let imgname = product.name
+            cell.imageView?.image = UIImage(named: product.imageUrl!)
         }
         
         return cell
@@ -115,27 +129,31 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
         
         self.editedProductView = EditProductVC()
         
-        guard let currentProduct = products?[indexPath.row] else { return }
+        let currentProduct = productsManaged?[indexPath.row]
+        
+     
+        
         
 //        if isEditing {
 //            self.editedProductView = EditProductVC()
 //            self.editedProductView?.title = currentProduct.name
 //            editedProductView?.currentProduct = currentProduct
 //            self.navigationController?.pushViewController(self.editedProductView!, animated: true)
-//
+
 //        } else {
             guard let companyName = title else { return }
-            let webView = WebView(with: currentProduct.productURL)
-            webView.title = currentProduct.name
-            webView.currentProduct = currentProduct
+            let webView = WebView(with: currentProduct!.productURL!)
+            webView.title = currentProduct!.name
+            webView.currentCoreProduct = currentProduct
             webView.companyName = companyName
             self.navigationController?.pushViewController(webView, animated: true)
-//        }
+        }
         
-    }
     
     
     
+    
+    /*
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //swift is smart enough to know that if you are using == on a UITableViewCellEditingStyle object, you don't need to use the whole name, just the part of the enum you are checking
         if editingStyle == .delete {
@@ -146,6 +164,7 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
             
         } //no need for an else-if here, cuz you don't care if it's not 'delete'
     }
+ */
     
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -154,21 +173,24 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     // Override to support rearranging the table view.
+   /*
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedProduct = self.products![sourceIndexPath.row]
-        products?.remove(at: sourceIndexPath.row)
-        products?.insert(movedProduct, at: destinationIndexPath.row)
+        let movedProduct = self.productView![sourceIndexPath.row]
+        ProductVC?.delete(at: sourceIndexPath.row)
+        ProductVC?.insert(movedProduct, at: destinationIndexPath.row)
         
         
     }
-    
+ 
+    */
+        
     // Override to support conditional rearranging of the table view.
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return NO if you do not want the item to be re-orderable.
         return true
         
-    }
+        }
     
-}
+    }
 
 
