@@ -58,35 +58,57 @@ class DAO {
         }
     }
     
-    func editCompany(name: String, imageUrl: String?, stockTicker: String?, stockPrice: Stock?){
+    func editCompany(coreCompany: CoreCompany, name: String, imageUrl: String?, stockTicker: String?){
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    
-        let updatedContext = appDelegate.persistentContainer.viewContext
-        let updatedCompany = CoreCompany(context: updatedContext)
-        updatedCompany.name = name
-    
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        coreCompany.name = name
+        coreCompany.imageUrl = imageUrl
+        coreCompany.stockTicker = stockTicker
+
+//        let fetchRequest : NSFetchRequest<CoreCompany> = CoreCompany.fetchRequest()
+//        fetchRequest.predicate = NSPredicate(format: "name = %@", name)
+//        guard let companies = try? managedContext.fetch(fetchRequest) else { return }
+//        companies[0].name = "Amazon1"
+        
         do {
-            try updatedContext.updatedObjects
+            try managedContext.save()
         } catch let error as NSError {
-            print("Could not edit. \(error), \(error.userInfo)")
+            print("Could not . \(error), \(error.userInfo)")
         }
+        
+        
+        
+      //  managedContext.fetch(fetchRequest)
+        
+        
+//
+//        let managedCompany = CoreCompany(context: updatedContext)
+//        managedCompany.name = name
+//
+//        do {
+//            try managedCompany.updatedObjects
+//        } catch let error as NSError {
+//            print("Could not edit. \(error), \(error.userInfo)")
+//        }
     
     }
     
-    func editProduct(name: String, imageUrl: String?) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-
-        let updatedProductContext = appDelegate.persistentContainer.viewContext
-        let updatedProduct = CoreProduct(context: updatedProductContext)
-        updatedProduct.name = name
-
-        do {
-            try updatedProductContext.updatedObjects
-        } catch let error as NSError {
-            print("Could not edit products. \(error), \(error.userInfo)")
-        }
-
-    }
+//    func editProduct(name: String, imageUrl: String?) {
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//
+//        let updatedProductContext = appDelegate.persistentContainer.viewContext
+//        let updatedProduct = CoreProduct(context: updatedProductContext)
+//        updatedProduct.name = name
+//
+//        do {
+//            try updatedProductContext.updatedObjects
+//        } catch let error as NSError {
+//            print("Could not edit products. \(error), \(error.userInfo)")
+//        }
+//
+//    }
     
     static func delete(company: Company) {
         

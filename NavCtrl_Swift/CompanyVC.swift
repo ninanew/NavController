@@ -67,6 +67,12 @@ final class CompanyVC: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableData = DAO.readCompanies()
+        tableView.reloadData()
+    }
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
             tableView.setEditing(editing, animated: editing)
@@ -139,10 +145,26 @@ extension CompanyVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+  
+        
         if let currentCompany = tableData?[indexPath.row] {
-            let productVc = ProductVC()
-            productVc.title = currentCompany.name
-            navigationController?.pushViewController(productVc, animated: true)
+            
+            if(isEditing){
+                let vc = EditCompanyVC()
+                vc.title = currentCompany.name
+                vc.currentCompany = currentCompany
+                navigationController?.pushViewController(vc, animated: true)
+            }
+            else {
+                let productVc = ProductVC()
+                productVc.title = currentCompany.name
+                navigationController?.pushViewController(productVc, animated: true)
+            }
+            
         }
+        
+       
     }
 }

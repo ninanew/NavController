@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SnapKit
+//import SnapKit
 
 class EditCompanyVC: UIViewController, UITextFieldDelegate {
     
@@ -65,15 +65,15 @@ class EditCompanyVC: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.tintColor = .white
         
         view.addSubview(editCompanyText)
-        editCompanyText.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.top.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().inset(20)
-            make.edges.equalToSuperview()
-            make.center.equalToSuperview()
-            make.centerX.equalToSuperview()
-        }
+//        editCompanyText.snp.makeConstraints { make in
+//            make.leading.equalToSuperview()
+//            make.trailing.equalToSuperview()
+//            make.top.equalToSuperview().offset(10)
+//            make.bottom.equalToSuperview().inset(20)
+//            make.edges.equalToSuperview()
+//            make.center.equalToSuperview()
+//            make.centerX.equalToSuperview()
+//        }
         
         
     }
@@ -82,18 +82,15 @@ class EditCompanyVC: UIViewController, UITextFieldDelegate {
     
     @objc func toggleSave() {
         
-        guard let companyName = editCompanyText.text else {
-            //error handling if is empty or something else
-            //error message for a user
-            return
-            
-        }
-        
-        guard let imageUrl = editImageUrlText.text,
+    
+        guard
+            let companyName = editCompanyText.text,
+            let imageUrl = editImageUrlText.text,
             let ticker = editStockTickerText.text
             else { return }
-        guard let oldName = title else { return }
-        DAO.share.editCompany(name: oldName, imageUrl: imageUrl, stockTicker: companyName, stockPrice: <#Stock?#>)
+        
+        DAO.share.editCompany(coreCompany: currentCompany!.core!, name: companyName, imageUrl: imageUrl, stockTicker: ticker)
+        
         self.navigationController?.popToRootViewController(animated: true)
         
         return

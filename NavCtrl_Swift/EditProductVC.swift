@@ -73,18 +73,16 @@ class EditProductVC: UIViewController, UITextFieldDelegate {
     @objc func toggleSave() {
         
         guard let newProductName = editProductText.text else {
-            //error handling if is empty or somthing else
-            //error message for a user
-            
+            print("ERROR: No DATA about product name!")
             return
             
-            
         }
+        
         guard let imageUrl = editProductImageText.text,
             let productUrl = editProductUrlText .text
             else { return }
         guard let companyName = companyName, let productOldName = title else { return }
-        DAO.share.editProduct(companyName: companyName, productName: productOldName, newProductName: newProductName, imageUrl: imageUrl, productURL: productUrl)
+      //  DAO.share.editProduct(companyName: companyName, productName: productOldName, newProductName: newProductName, imageUrl: imageUrl, productURL: productUrl)
         self.navigationController?.popViewController(animated: true)
         
     }
