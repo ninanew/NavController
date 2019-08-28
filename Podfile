@@ -9,3 +9,6 @@ target 'NavCtrl_Swift' do
 	pod 'SnapKit', '~> 4.2.0'
 
 end
+
+#  jsonArray.map { Company(withJson: $0) } -> [Company?]
+# jsonArray.compactMap { Company(withJson: $0) } -> [Company]

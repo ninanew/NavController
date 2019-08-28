@@ -28,7 +28,6 @@ class WebView: UIViewController, WKNavigationDelegate {
         let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditMode))
         self.navigationItem.rightBarButtonItem = editButton
         self.navigationItem.leftBarButtonItem?.title = "Back"
-        
         self.navigationController?.navigationBar.backgroundColor = .green
         self.navigationController?.navigationBar.tintColor = .white
     

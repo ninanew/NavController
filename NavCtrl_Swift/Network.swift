@@ -10,25 +10,16 @@ import Foundation
 
 class Network {
     
-    //    var companyVC : CompanyVC
-    var delegate: StockDelegate?
-    
-    //    init(companyVC : CompanyVC) {
-    //        self.companyVC = companyVC
+    var stockUpdated: ((Stock) -> Void)?
     init() {
         start()
     }
     
     func start() {
-        
-       
-        
-        let symbols = DAO.share.companiesObject.map { $0.stockTicker!.uppercased() }
-        
-        for symbol in symbols {
-            if symbol != "" {
-                letPrice(symbol: symbol)
-            }
+       let symbols = DAO.readCompanies()?.compactMap { $0.stockTicker.uppercased() }
+    
+        symbols?.forEach { symbol in
+            letPrice(symbol: symbol)
         }
     }
     
@@ -57,14 +48,13 @@ class Network {
                 }
                 let stock = try Stock(json: jsonObject)
                 
-                for (index, company) in DAO.share.companiesObject.enumerated() {
-                    if stock.symbol == company.stockTicker {
-                      //  print("here i get the price of \(DAO.share.companies[index].name)")
-                        DAO.share.companiesObject[index].stockPrice = stock.price
-                    }
-                }
-                DispatchQueue.main.async {
-                  self.delegate?.updated()
+//                for (index, company) in DAO.share.companiesObject.enumerated() {
+//                    if stock.symbol == company.stockTicker {
+//                        DAO.share.companiesObject[index].stockPrice = stock.price
+//                    }
+//                }
+                DispatchQueue.main.async { [weak self] in
+                    self?.stockUpdated?(stock)
                 }
                 print("\(stock.symbol) = \(stock.price)")
             }
@@ -72,9 +62,7 @@ class Network {
                 print("Failed \(serilizationError.localizedDescription)")
             }
             
-            } .resume()
-        
+            }.resume()
     }
-    
 }
 

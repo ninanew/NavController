@@ -8,9 +8,10 @@
 
 import UIKit
 
-final class CompanyTableViewCell: UITableViewCell {
+final class CompanyTableViewCell: UITableViewCell, ReusableView {
     
-    var onTap: (() -> Void)?
+  //Joel's code
+  //  var onTap: (() -> Void)?
     
     private let button: UIButton = {
         let button = UIButton()
@@ -29,18 +30,24 @@ final class CompanyTableViewCell: UITableViewCell {
     
     private func commonInit() {
         selectionStyle = .none
+        
+        //view code lives here
     }
     
     func setup(with company: Company) {
-        //
-    }
-    
-    func buttonWasTapped() {
-        onTap?()
-        doShit(string: "some string")
-    }
-    
-    private func doShit(string: String) {
-        
+        textLabel?.text = company.name
+        detailTextLabel?.text = company.stockPrice?.price ?? ""
     }
 }
+    
+    // Joel's code
+//    func buttonWasTapped() {
+//        onTap?()
+//        doShit(string: "some string")
+    
+//    }
+//
+//    private func doShit(string: String) {
+//
+//    }
+

@@ -13,19 +13,12 @@ class EditProductVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var editProductText: UITextField!
     @IBOutlet weak var editProductUrlText: UITextField!
     @IBOutlet weak var editProductImageText: UITextField!
-    
     @IBOutlet weak var delButBottomConstraint: NSLayoutConstraint!
-    
-    
- //   var productsManaged : [CoreCompany]?
     
     @IBAction func deleteProduct(_ sender: Any) {
         
         guard let companyName = companyName, let productOldName = title else { return }
-        DAO.share.deleteProductsAt(companyName: companyName, productName: productOldName)
-//
-//
-//        reloadInputViews()
+      //  DAO.share.deleteProductsAt(companyName: companyName, productName: productOldName)
         
         navigationController?.popToViewController((navigationController?.viewControllers[1])! , animated: true)
     
@@ -56,9 +49,6 @@ class EditProductVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
- //       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIResponder.keyboardDidShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIResponder.keyboardWillHideNotification, object: nil)
-        
         let cancelBarButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(toggleCancel))
         self.navigationItem.leftBarButtonItem = cancelBarButton
         let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(toggleSave))
@@ -78,12 +68,6 @@ class EditProductVC: UIViewController, UITextFieldDelegate {
         editProductUrlText.text = currentProduct.productURL
         editProductImageText.text = currentProduct.imageUrl
         
-        
-        
-        //    let webView = WebView(with: currentProduct.productURL)
-        //        webView.title = currentProduct.name
-        //        self.navigationController?.pushViewController(webView, animated: true)
-        
     }
     
     @objc func toggleSave() {
@@ -91,7 +75,9 @@ class EditProductVC: UIViewController, UITextFieldDelegate {
         guard let newProductName = editProductText.text else {
             //error handling if is empty or somthing else
             //error message for a user
+            
             return
+            
             
         }
         guard let imageUrl = editProductImageText.text,

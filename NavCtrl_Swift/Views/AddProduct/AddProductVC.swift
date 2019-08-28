@@ -55,19 +55,13 @@ class AddProductVC : UIViewController, UITextFieldDelegate {
         
          DAO.share.saveProductToCoreData(name: productName, imageUrl: imageUrl, productURL: productURL)
         
-     
         self.navigationController?.popViewController(animated: true)
-        
-        //        self.navigationController?.popToRootViewController(animated: true)
         
     }
     
     @objc func toggleCancel() {
 
         self.navigationController?.popViewController(animated: true)
-
-        //        self.navigationController?.popToViewController(, animated: Bool)(animated: true)
-        
     }
 }
 

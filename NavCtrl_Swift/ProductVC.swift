@@ -15,57 +15,26 @@ class ProductVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
-
     var currentCompanyIndex: Int?
-    
-//    static let share = CoreProduct()
     var productsManaged : [CoreProduct]!
- 
-    
-    
-  //  var products: [Product]?
-    
-    
     var productView: ProductVC?
     var editedProductView : EditProductVC?
     
     let dao = DAO.share
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(toggleAdd))
         self.navigationItem.rightBarButtonItem = addBarButton
-    }
     
-    /*
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let companyList = dao.companies
-        guard let currentCompanyIndex = currentCompanyIndex else { return }
-        let currentCompany = companyList[currentCompanyIndex]
-        //products = currentCompany.products
-        
-        if products!.isEmpty {
-            let nib = Bundle.main.loadNibNamed("CompanyAddOn", owner: self, options: nil)?.first as! CompanyAddOn
-            
-            nib.frame = view.bounds
-            nib.companyList = currentCompany
-            nib.mainSet()
-            nib.addProductPressed.addTarget(self, action: #selector(toggleAdd), for: .touchUpInside)
-            view.addSubview(nib)
-            
-        } else  {
-            tableView.reloadData()
-        }
     }
- */
+   
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: editing)
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -96,7 +65,6 @@ class ProductVC: UIViewController {
     
 }
 
-
 extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -117,7 +85,7 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
         //configure the cell
         if let product = productsManaged?[indexPath.row] {
             cell.textLabel?.text = product.name
-            let imgname = product.name
+         //   let imgname = product.name
             cell.imageView?.image = UIImage(named: product.imageUrl!)
         }
         
@@ -131,16 +99,6 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
         
         let currentProduct = productsManaged?[indexPath.row]
         
-     
-        
-        
-//        if isEditing {
-//            self.editedProductView = EditProductVC()
-//            self.editedProductView?.title = currentProduct.name
-//            editedProductView?.currentProduct = currentProduct
-//            self.navigationController?.pushViewController(self.editedProductView!, animated: true)
-
-//        } else {
             guard let companyName = title else { return }
             let webView = WebView(with: currentProduct!.productURL!)
             webView.title = currentProduct!.name
@@ -148,23 +106,6 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
             webView.companyName = companyName
             self.navigationController?.pushViewController(webView, animated: true)
         }
-        
-    
-    
-    
-    
-    /*
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        //swift is smart enough to know that if you are using == on a UITableViewCellEditingStyle object, you don't need to use the whole name, just the part of the enum you are checking
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            products?.remove(at: indexPath.row)
-            //            dao.deleteProductsAt(index: indexPath.row, productName: <#String#>)
-            tableView.reloadData()
-            
-        } //no need for an else-if here, cuz you don't care if it's not 'delete'
-    }
- */
     
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -173,17 +114,6 @@ extension ProductVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     // Override to support rearranging the table view.
-   /*
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedProduct = self.productView![sourceIndexPath.row]
-        ProductVC?.delete(at: sourceIndexPath.row)
-        ProductVC?.insert(movedProduct, at: destinationIndexPath.row)
-        
-        
-    }
- 
-    */
-        
     // Override to support conditional rearranging of the table view.
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return NO if you do not want the item to be re-orderable.

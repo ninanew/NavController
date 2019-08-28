@@ -14,190 +14,97 @@ class DAO {
     
     static let share = DAO()
     
-    var selectedCoreCompany : CoreCompany?
     
-    
-    private init() {
-        
-        readCompanies()
-        
-      //  let company = companiesObject[0]
-        
-  
-
-       //  saveProductToCoreData(for: company, name: "Sample 2", imageUrl: "Apple iPhone", productURL: "https://davedelong.com/blog/2018/05/09/the-laws-of-core-data/")
-        
-    }
-    
-    var companies = [Company]()
-    var companiesObject = [CoreCompany]()
-    
-    func deleteElementsAt(index: Int) {
-        companies.remove(at: index)
-        
-    }
-    
-    func deleteProductsAt(companyName: String, productName: String) {
-        for (indexC, company) in companies.enumerated() {
-            if company.name == companyName {
-                for (indexP, product) in companies[indexC].products.enumerated() {
-                    if product.name == productName {
-                        companies[indexC].products.remove(at: indexP)
-                    }
-                }
-            }
-        }
-    }
-
-
-    func addCompany(name: String, ticker: String, imageUrl: String) {
-        let company = Company(name: name, imageUrl: imageUrl, stockTicker: ticker, products: [Product](), stockPrice: nil)
-        companies.append(company)
-    }
-    
-    func addProduct(for companyName: String, name: String, imageUrl: String, productURL: String) {
-        
-        let product = Product(name: name, imageUrl: imageUrl, productURL: productURL)
-        
-        for (index, company) in companies.enumerated() {
-            if companyName == company.name {
-                companies[index].products.append(product)
-            }
-        }
-    }
-    
-    func editCompany(name: String, newName: String, ticker: String, imageUrl: String) {
-        for (index, company) in companies.enumerated() {
-            if company.name == name {
-                companies[index].name = newName
-                companies[index].imageUrl = imageUrl
-                companies[index].stockTicker = ticker
-            }
-        }
-    }
-    func editProduct(companyName: String, productName: String, newProductName: String, imageUrl: String, productURL: String) {
-        for (indexC, company) in companies.enumerated() {
-            if company.name == companyName {
-                for (indexP, product) in companies[indexC].products.enumerated() {
-                    if product.name == productName {
-                        companies[indexC].products[indexP].name = newProductName
-                        companies[indexC].products[indexP].imageUrl = imageUrl
-                        companies[indexC].products[indexP].productURL = productURL
-                    }
-                }
-            }
-        }
-    }
-    
-    func insert(index: Int) {
-    
-    }
-    
-    func readCompanies() {
-        
-            // Retrieve all data from Core Data
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-            }
-        
-            let managedContext = appDelegate.persistentContainer.viewContext
-        
-            let fetchRequest = NSFetchRequest<CoreCompany>(entityName: "CoreCompany")
-            do {
-                companiesObject = try managedContext.fetch(fetchRequest)
-                
-            } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            }
-    
-}
-
-    func saveProductToCoreData(name: String, imageUrl: String, productURL: String) {
-      
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return
-            
-        }
-      
+    static func readCompanies() -> [Company]? {
+        // Retrieve all data from Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
         let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest : NSFetchRequest<CoreCompany> = CoreCompany.fetchRequest()
+        guard let companies = try? managedContext.fetch(fetchRequest) else { return nil }
         
+        return companies.compactMap { Company(withCore: $0) }
+    }
+    
+    func saveProductToCoreData(name: String, imageUrl: String, productURL: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
         let productsManaged = CoreProduct(context: managedContext)
         
         productsManaged.name = name
-        
         productsManaged.imageUrl = imageUrl
-        
         productsManaged.productURL = productURL
-        
-        selectedCoreCompany!.addToProducts(productsManaged)
+        // selectedCoreCompany!.addToProducts(productsManaged)
         
         do {
-  
             try managedContext.save()
-            
-            
-            
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
-        
-        }
-    
-    }
-        
-    func saveCompanyToCoreData(name: String, imageUrl: String, stockTicker: String, stockPrice: Stock?) {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return
             
         }
+    }
+    
+    func saveCompanyToCoreData(name: String, imageUrl: String?, stockTicker: String?, stockPrice: Stock?) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let company = CoreCompany(context: managedContext)
-        
-        
-        company.name = name
-        company.imageUrl = imageUrl
-        
-        company.setValue(stockTicker, forKeyPath: "stockTicker")
-        company.setValue(stockPrice, forKeyPath: "stockPrice")
-        
-        
+        let managedCompany = CoreCompany(context: managedContext)
+        managedCompany.name = name
         
         do {
             try managedContext.save()
-            companiesObject.append(company )
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
     
+    func editCompany(name: String, imageUrl: String?, stockTicker: String?, stockPrice: Stock?){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     
-    func deleteCompanyFromCoreData(index:Int) {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let companyToDelete = self.companiesObject[index]
-        
-        managedContext.delete(companyToDelete)
+        let updatedContext = appDelegate.persistentContainer.viewContext
+        let updatedCompany = CoreCompany(context: updatedContext)
+        updatedCompany.name = name
+    
         do {
-            try managedContext.save()
-            companiesObject.remove(at: index)
+            try updatedContext.updatedObjects
         } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+            print("Could not edit. \(error), \(error.userInfo)")
         }
-        
-        
+    
     }
     
-    
+    func editProduct(name: String, imageUrl: String?) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
+        let updatedProductContext = appDelegate.persistentContainer.viewContext
+        let updatedProduct = CoreProduct(context: updatedProductContext)
+        updatedProduct.name = name
+
+        do {
+            try updatedProductContext.updatedObjects
+        } catch let error as NSError {
+            print("Could not edit products. \(error), \(error.userInfo)")
+        }
+
+    }
+    
+    static func delete(company: Company) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        if let com = company.core {
+            managedContext.delete(com)
+        }
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not delete. \(error), \(error.userInfo)")
+        }
+    }
+    
     func createCompany() {
-        var apple = Company(name: "Apple Mobile Devices", imageUrl: "Apple Mobile Devices", stockTicker: "AAPL", products: [Product](), stockPrice: nil)
-        
-        
+        var apple = Company(name: "Apple Mobile Devices", imageUrl: "Apple Mobile Devices", stockTicker: "AAPL")
         
         let appleIPhone = Product(name: "Apple iPhone", imageUrl: "Apple iPhone", productURL: "https://www.apple.com/iphone/")
         let appleIPadPro = Product(name: "Apple iPad Pro", imageUrl: "Apple iPad Pro", productURL: "https://www.apple.com/ipad-pro/")
@@ -224,29 +131,29 @@ class DAO {
         let windowsSurface = Product(name: "Windows Surface", imageUrl: "Windows Surface", productURL:"https://www.microsoft.com/en-us/store/b/surface?invsrc=search&cl_vend=google&cl_ch=sem&cl_camp=907269320&cl_adg=47974157511&cl_crtv=284450611193&cl_kw=+surface&cl_pub=google.com&cl_place=&cl_dvt=c&cl_pos=1t1&cl_mt=b&cl_gtid=kwd-488544306872&cl_pltr=&cl_dim0=W5brhAAAAYkj87pa:20180910220908:s&OCID=AID695933_SEM_W5brhAAAAYkj87pa:20180910220908:s&s_kwcid=AL!4249!3!284450611193!b!!g!!%2Bsurface&ef_id=W5brhAAAAYkj87pa:20180910220908:s")
         
         
-        apple.products.append(appleIPhone)
-        apple.products.append(appleIPadPro)
-        apple.products.append(appleIPadTouch)
+        apple.products?.append(appleIPhone)
+        apple.products?.append(appleIPadPro)
+        apple.products?.append(appleIPadTouch)
         
-        samsung.products.append(samsungGalaxyS)
-        samsung.products.append(samsungGalaxyTab)
-        samsung.products.append(samsungGalaxyNote)
+        samsung.products?.append(samsungGalaxyS)
+        samsung.products?.append(samsungGalaxyTab)
+        samsung.products?.append(samsungGalaxyNote)
         
-        amazon.products.append(amazonEcho)
-        amazon.products.append(amazonFireHD)
-        amazon.products.append(amazonEchoDot)
+        amazon.products?.append(amazonEcho)
+        amazon.products?.append(amazonFireHD)
+        amazon.products?.append(amazonEchoDot)
         
-        microsoft.products.append(microsoftNokiaLumia)
-        microsoft.products.append(windowsPhone)
-        microsoft.products.append(windowsSurface)
+        microsoft.products?.append(microsoftNokiaLumia)
+        microsoft.products?.append(windowsPhone)
+        microsoft.products?.append(windowsSurface)
         
         
         
-        companies.append(apple)
-        companies.append(samsung)
-        companies.append(amazon)
-        companies.append(microsoft)
-       
+//        companies.append(apple)
+//        companies.append(samsung)
+//        companies.append(amazon)
+//        companies.append(microsoft)
+        
     }
     
     

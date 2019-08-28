@@ -20,10 +20,8 @@ class AddCompanyVC : UIViewController, UITextFieldDelegate {
     func getCompanyName() -> String {
         guard let companyName = companyNameText.text, companyName.isEmpty else { return "" }
         
-        
         let imageUrl = imageUrlText.text ?? ""
-//        let company = Company(name: companyName, imageUrl: imageUrl, stockTicker: tickerText.text!, products: [Product](), stockPrice: nil)
-        
+
         return companyName
         
     }
@@ -42,31 +40,19 @@ class AddCompanyVC : UIViewController, UITextFieldDelegate {
     
     @objc func toggleSave() {
         guard let companyName = companyNameText.text else {
-            //error handling if is empty or somthing else
+            //TODO: error handling if is empty or somthing else
             //error message for a user
+            //UIAlertController <- google this
             return 
         }
-        guard let imageUrl = imageUrlText.text,
-            let ticker = tickerText.text
-            else { return }
         
-        //DAO.share.addCompany(name: companyName, ticker: ticker, imageUrl: imageUrl)
-        DAO.share.saveCompanyToCoreData(name: companyName, imageUrl: imageUrl, stockTicker: ticker, stockPrice: nil)
+        DAO.share.saveCompanyToCoreData(name: companyName, imageUrl: nil, stockTicker: nil, stockPrice: nil)
         self.navigationController?.popToRootViewController(animated: true)
 
     }
     
     @objc func toggleEditMode() {
         self.navigationController?.popToRootViewController(animated: true)
-//        if self.navigationItem.rightBarButtonItem?.title == "Save" {
-//            self.editCompanyVC.setEditing(true, animated: true)
-//            self.navigationItem.rightBarButtonItem?.title = "Cancel"
-//        } else {
-//            self.editCompanyVC.setEditing(false, animated: true)
-//            self.navigationItem.rightBarButtonItem?.title = "Save"
-//        }
-    
     }
-
 }
 

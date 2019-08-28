@@ -18,7 +18,7 @@ class EditCompanyVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func deleteCompany(_ sender: Any) {
         
-        DAO.share.deleteElementsAt(index: currentCompanyIndex!)
+      //  DAO.share.deleteElementsAt(index: currentCompanyIndex!)
         navigationController?.popViewController(animated: true)
     }
     
@@ -49,11 +49,7 @@ class EditCompanyVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIResponder.keyboardDidShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
+                
         guard let currentCompany = currentCompany else { return }
         editCompanyText.text = currentCompany.name
         editImageUrlText.text = currentCompany.imageUrl
@@ -97,7 +93,7 @@ class EditCompanyVC: UIViewController, UITextFieldDelegate {
             let ticker = editStockTickerText.text
             else { return }
         guard let oldName = title else { return }
-        DAO.share.editCompany(name: oldName, newName: companyName, ticker: ticker, imageUrl: imageUrl)
+        DAO.share.editCompany(name: oldName, imageUrl: imageUrl, stockTicker: companyName, stockPrice: <#Stock?#>)
         self.navigationController?.popToRootViewController(animated: true)
         
         return
